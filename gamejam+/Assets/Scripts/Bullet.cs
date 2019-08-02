@@ -9,6 +9,11 @@ public class Bullet : MonoBehaviour
     private bool moving = false;
     private Vector3 direction = Vector3.zero;
 
+    void Start()
+    {
+        Invoke("selfDestruct", 5);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -22,7 +27,6 @@ public class Bullet : MonoBehaviour
     {
         this.direction = direction;
         moving = true;
-        Invoke("selfDestruct", 5);
     }
 
     private void selfDestruct()
