@@ -22,5 +22,11 @@ public class Bullet : MonoBehaviour
     {
         this.direction = direction;
         moving = true;
+        Invoke("selfDestruct", 5);
+    }
+
+    private void selfDestruct()
+    {
+        Destroy(this.gameObject);
     }
 }

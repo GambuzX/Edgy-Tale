@@ -6,12 +6,16 @@ public class PolyShooter : MonoBehaviour
 {
 
     public GameObject bulletPrefab;
+    public float shootDelay = 1f;
 
     private List<Transform> childVertices = new List<Transform>();
+
+    private bool shootLock;
 
     // Start is called before the first frame update
     void Start()
     {
+        shootLock = false;
         foreach(Transform child in transform)
         {
             childVertices.Add(child);
@@ -22,9 +26,11 @@ public class PolyShooter : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (!shootLock && Input.GetKeyDown(KeyCode.LeftControl))
         {
+            shootLock = true;
             spawnBullets();
+            Invoke("unlockShoot", shootDelay);
         }
     }
 
@@ -37,5 +43,10 @@ public class PolyShooter : MonoBehaviour
             bullet.GetComponent<Bullet>().setDirection(bulletDir);
 
         }
+    }
+
+    void unlockShoot()
+    {
+        this.shootLock = false;
     }
 }
