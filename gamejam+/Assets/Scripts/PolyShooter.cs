@@ -6,7 +6,7 @@ public class PolyShooter : MonoBehaviour
 {
 
     public GameObject bulletPrefab;
-    public float shootDelay = 1f;
+    public float shootDelay = 0.4f;
 
     private List<Transform> childVertices = new List<Transform>();
 
