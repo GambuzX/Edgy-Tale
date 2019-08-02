@@ -26,7 +26,7 @@ public class PolyShooter : MonoBehaviour
     void Update()
     {
 
-        if (!shootLock && Input.GetKeyDown(KeyCode.LeftControl))
+        if (!shootLock && Input.GetButtonDown("Fire1"))
         {
             shootLock = true;
             spawnBullets();
@@ -39,7 +39,7 @@ public class PolyShooter : MonoBehaviour
         foreach (Transform child in childVertices)
         {
             Vector3 bulletDir = (child.position - transform.position).normalized;
-            GameObject bullet = Instantiate(bulletPrefab, child.position, Quaternion.identity, transform);
+            GameObject bullet = Instantiate(bulletPrefab, child.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().setDirection(bulletDir);
 
         }
