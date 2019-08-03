@@ -38,8 +38,12 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.GetComponent<Bullet>())
         {
             soundSource.Play();
-            this.enabled = false;
-            this.GetComponent<SpriteRenderer>().enabled = false;
+            foreach(Transform child in transform)
+            {
+                if (child.GetComponent<SpriteRenderer>())
+                    child.GetComponent<SpriteRenderer>().enabled = false;
+            }
+            this.GetComponent<PolygonCollider2D>().enabled = false;
             edginessHandler.addEdginess(kill_points);
             Invoke("destroySelf", 1);
         }
