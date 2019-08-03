@@ -44,6 +44,12 @@ public class Girlfriend : MonoBehaviour
 
     private void EndGame()
     {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Minimap");
+        foreach(GameObject gameObject in gameObjects)
+        {
+            gameObject.SetActive(false);
+        }
+
         movement_lock = true;
         foreach(Transform obj in GameObject.Find("GirlfriendMsgLose").transform)
         {
@@ -58,6 +64,12 @@ public class Girlfriend : MonoBehaviour
 
     private void TrueEnding()
     {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Minimap");
+        foreach (GameObject gameObject in gameObjects)
+        {
+            gameObject.SetActive(false);
+        }
+
         movement_lock = true;
         foreach (Transform obj in GameObject.Find("GirlfriendMsgWin").transform)
         {
