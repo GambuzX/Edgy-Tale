@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     protected HealthHandler healthHandler;
 
     // Start is called before the first frame update
-   protected void Start()
+   protected virtual void Start()
     {
         soundSource = GetComponent<AudioSource>();
         soundSource.clip = soundEffect; 
