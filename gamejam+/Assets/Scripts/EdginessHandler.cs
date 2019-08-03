@@ -16,9 +16,15 @@ public class EdginessHandler : MonoBehaviour
     private float edginess;
     private int egg_counter;
 
+    public AudioClip soundEffectGrow, soundEffectUngrow;
+
+    private AudioSource soundSource;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        soundSource = GameObject.FindObjectOfType<AudioSource>();
         bar = GameObject.Find("EdginessBar").GetComponent<Slider>();
         currentLevel = GameObject.Find("CurrentEdges").GetComponent<Text>();
         nextLevel = GameObject.Find("NextEdges").GetComponent<Text>();
@@ -48,6 +54,16 @@ public class EdginessHandler : MonoBehaviour
 
         if ((int)edginess != previous)
         {
+            if((int)edginess < previous)
+            {
+                soundSource.clip = soundEffectUngrow;
+            }
+            else
+            {
+                soundSource.clip = soundEffectGrow;
+            }
+            soundSource.Play();
+            
             spriteHandler.changeSprite((int)edginess);
         }
 

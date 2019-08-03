@@ -5,6 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    public AudioClip soundEffect;
+
+    private AudioSource soundSource;
+
     public float speed = 1f;
     public float kill_points = 0.1f;
 
@@ -16,6 +20,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundSource = GetComponent<AudioSource>();
+        soundSource.clip = soundEffect; 
         player = GameObject.FindObjectOfType<PlayerMovement>().transform;
         edginessHandler = GameObject.FindObjectOfType<EdginessHandler>();
         healthHandler = GameObject.FindObjectOfType<HealthHandler>();
@@ -31,8 +37,11 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Bullet>())
         {
+            soundSource.Play();
+            this.enabled = false;
+            this.GetComponent<SpriteRenderer>().enabled = false;
             edginessHandler.addEdginess(kill_points);
-            Destroy(this.gameObject);
+            Invoke("destroySelf", 1);
         }
         
         if (collision.gameObject.CompareTag("Polygon"))
@@ -40,5 +49,10 @@ public class Enemy : MonoBehaviour
             healthHandler.changeHealth(-10.0f);   
             Destroy(this.gameObject);
         }
+    }
+
+    private void destroySelf()
+    {
+        Destroy(this.gameObject);
     }
 }

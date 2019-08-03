@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PolyShooter : MonoBehaviour
 {
+    public AudioClip soundEffect;
+
+    private AudioSource soundSource;
 
     public float shootDelay = 0.4f;
 
@@ -17,6 +20,8 @@ public class PolyShooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundSource = this.gameObject.AddComponent<AudioSource>();
+        soundSource.clip = soundEffect;
         shootLock = false;
         foreach(Transform child in transform)
         {
@@ -40,12 +45,12 @@ public class PolyShooter : MonoBehaviour
 
     void spawnBullets()
     {
+        soundSource.Play();
         foreach (Transform child in childVertices)
         {
             Vector3 bulletDir = (child.position - transform.position).normalized;
             GameObject bullet = Instantiate(bulletPrefab, child.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().setDirection(bulletDir);
-
         }
         edginessHandler.handleShoot();
     }
