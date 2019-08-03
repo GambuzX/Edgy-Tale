@@ -12,11 +12,16 @@ public class Story : MonoBehaviour
     public Image actual_image;
     public Image fade_image;
 
+    public Text skip_text;
+    private bool canSkip;
+    private float timeSinceCanSkip;
+
     private int num_image;
 
     // Start is called before the first frame update
     void Start()
     {
+        canSkip = false;
         num_image = 1;
         Invoke("Fade_Anim", 5f);
         Invoke("ChangeImage", 6f);
@@ -26,6 +31,27 @@ public class Story : MonoBehaviour
         Invoke("Fade_Comeback", 16f);
         Invoke("Fade_Anim", 23f);
         Invoke("LoadGame", 25f);
+    }
+
+    private void Update()
+    {
+        if (canSkip && Input.GetButtonDown("Skip"))
+        {
+            SceneManager.LoadScene("Game");
+        }
+
+        if (Input.anyKey && !canSkip)
+        {
+            skip_text.gameObject.SetActive(true);
+            canSkip = true;
+            timeSinceCanSkip = Time.time;
+        }
+
+        if(Time.time - timeSinceCanSkip >= 2f)
+        {
+            canSkip = false;
+            skip_text.gameObject.SetActive(false);
+        }
     }
 
     private void Fade_Anim()
@@ -40,12 +66,12 @@ public class Story : MonoBehaviour
 
     private void ChangeImage()
     {
-        if(num_image == 1)
+        if (num_image == 1)
         {
             actual_image.sprite = breakup;
             num_image++;
         }
-        else if(num_image == 2)
+        else if (num_image == 2)
         {
             actual_image.sprite = angry;
             num_image++;
