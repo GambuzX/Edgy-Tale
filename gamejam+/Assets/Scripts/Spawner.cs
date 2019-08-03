@@ -52,4 +52,15 @@ public class Spawner : MonoBehaviour
     {
         if (spawnRate > minimumSpawnRate) spawnRate -= 0.5f;
     }
+
+    public void stopSpawning()
+    {
+        CancelInvoke();
+    }
+
+    public void unleashGirlfriend()
+    {
+        int index = Random.Range(0, nPos);
+        Instantiate(spriteHandler.GetGirlfriend(), spawnPositions[index].position, Quaternion.identity);
+    }
 }

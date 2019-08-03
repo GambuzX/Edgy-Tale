@@ -46,6 +46,11 @@ public class Bullet : MonoBehaviour
         this.direction = direction;
     }
 
+    public void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
     private void selfDestruct()
     {
         Destroy(this.gameObject);
@@ -53,7 +58,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!collision.gameObject.CompareTag("Polygon"))
+        if(collision.gameObject.CompareTag("Enemy"))
             Destroy(gameObject);
     }
 }
