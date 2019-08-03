@@ -5,6 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    public AudioClip soundEffect;
+
+    private AudioSource soundSource;
+
     public float speed = 1f;
 
     private Transform player;
@@ -12,6 +16,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundSource = GetComponent<AudioSource>();
+        soundSource.clip = soundEffect;
         player = GameObject.FindObjectOfType<PlayerMovement>().transform;   
     }
 
@@ -25,7 +31,15 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Bullet>())
         {
-            Destroy(this.gameObject);
+            soundSource.Play();
+            this.enabled = false;
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            Invoke("destroySelf", 1);
         }
+    }
+
+    private void destroySelf()
+    {
+        Destroy(this.gameObject);
     }
 }
