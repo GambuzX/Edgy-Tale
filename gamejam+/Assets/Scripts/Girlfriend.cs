@@ -11,11 +11,13 @@ public class Girlfriend : MonoBehaviour
     private bool movement_lock = false;
     private Transform player;
 
+    private bool trueEnding = false;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerMovement>().transform;
-        InvokeRepeating("increaseSpeed", 2f, 2f);
+        InvokeRepeating("increaseSpeed", 1f, 1f);
 
         movement_lock = false;
     }
@@ -26,23 +28,42 @@ public class Girlfriend : MonoBehaviour
         float distance = Vector3.Distance(player.position, transform.position);
         if (distance <= stopDistance)
         {
-            EndGame();
+            if (trueEnding)
+                TrueEnding();
+            else
+                EndGame();
         }
         if (!movement_lock)
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
     }
 
+    public void setEnding(bool ending)
+    {
+        trueEnding = ending;
+    }
+
     private void EndGame()
     {
         movement_lock = true;
-        foreach(Transform obj in GameObject.Find("GirlfriendMsg").transform)
+        foreach(Transform obj in GameObject.Find("GirlfriendMsgLose").transform)
         {
             obj.gameObject.SetActive(true);
         }
         player.GetComponent<PlayerMovement>().enabled = false;
-        player.GetComponentInChildren<PolyShooter>().enabled = false;
+        if (player.GetComponentInChildren<PolyShooter>())
+            player.GetComponentInChildren<PolyShooter>().enabled = false;
 
         //Invoke game over screen
+    }
+
+    private void TrueEnding()
+    {
+        movement_lock = true;
+        foreach (Transform obj in GameObject.Find("GirlfriendMsgWin").transform)
+        {
+            obj.gameObject.SetActive(true);
+        }
+        player.GetComponent<PlayerMovement>().enabled = false;
     }
     
     private void increaseSpeed()
