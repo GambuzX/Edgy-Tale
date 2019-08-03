@@ -261,7 +261,7 @@ MonoBehaviour:
   kill_points: 0.1
   damage: 10
   health: 1
-  rotateSpeed: 1000
+  rotateSpeed: 100
 --- !u!1 &8408266092312776019
 GameObject:
   m_ObjectHideFlags: 0
