@@ -8,6 +8,8 @@ public class EdginessHandler : MonoBehaviour
     public float shoot_edginess_cost = 0.005f;
     public int easter_egg_trigger = 50;
 
+    public int max_edges = 8;
+
     private Slider bar;
     private Text currentLevel, nextLevel;
 
@@ -15,10 +17,12 @@ public class EdginessHandler : MonoBehaviour
 
     private float edginess;
     private int egg_counter;
+    private bool shoot_cost_lock = false;
 
     public AudioClip soundEffectGrow, soundEffectUngrow;
 
     private AudioSource soundSource;
+    private Spawner spawner;
 
 
     // Start is called before the first frame update
@@ -29,6 +33,7 @@ public class EdginessHandler : MonoBehaviour
         currentLevel = GameObject.Find("CurrentEdges").GetComponent<Text>();
         nextLevel = GameObject.Find("NextEdges").GetComponent<Text>();
         spriteHandler = GameObject.FindObjectOfType<SpriteHandler>();
+        spawner = GameObject.FindObjectOfType<Spawner>();
         edginess = 3f;
         egg_counter = 0;
         updateSlider();
@@ -43,6 +48,8 @@ public class EdginessHandler : MonoBehaviour
 
     public void addEdginess(float inc)
     {
+        if (shoot_cost_lock) return;
+
         int previous = (int)edginess;
 
         edginess += inc;
@@ -69,6 +76,11 @@ public class EdginessHandler : MonoBehaviour
         if (edginess < 3f) edginess = 3f;
         updateSlider();
         egg_counter = 0;
+
+        if ((int) edginess >= max_edges )
+        {
+            triggerGameOver();
+        }
     }
 
     public void handleShoot()
@@ -91,5 +103,23 @@ public class EdginessHandler : MonoBehaviour
     public int getEdges()
     {
         return (int)edginess;
+    }
+
+    private void triggerGameOver()
+    {
+        spawner.stopSpawning();
+
+        bar.value = 0;
+        currentLevel.text = ((int)max_edges).ToString();
+        nextLevel.text = "∞";
+
+        shoot_cost_lock = true;
+
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(obj);
+        }
+
+        spawner.unleashGirlfriend();
     }
 }

@@ -8,6 +8,8 @@ girl_face: https://cdn.pixabay.com/photo/2018/04/27/16/38/female-3355169_960_720
 
 mexican: https://cdn.pixabay.com/photo/2017/01/12/18/00/sombrero-1975267_960_720.png
 
+monocle: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lipharoj_kaj_monoklo.svg/1024px-Lipharoj_kaj_monoklo.svg.png
+
 
 SHAPES
 --------------------

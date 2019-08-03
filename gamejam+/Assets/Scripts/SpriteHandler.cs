@@ -28,4 +28,9 @@ public class SpriteHandler : MonoBehaviour
         int n_edges = Random.Range(3, edges+1);
         return Resources.Load<GameObject>(Polygon.GetEnemyName(n_edges));
     }
+
+    public GameObject GetGirlfriend()
+    {
+        return Resources.Load<GameObject>("Girlfriend");
+    }
 }
