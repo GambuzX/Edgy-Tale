@@ -15,25 +15,19 @@ public class HealthHandler : MonoBehaviour
     public PlayerHealth player_health;
 
     //Power Ups
-    private bool canLooseHealth;
-    private float startShieldTime;
+    private bool shieldEnabled;
+
+    private PowerUpManager powerUpManager;
 
     // Start is called before the first frame update
     void Start()
     {
         soundSource = GetComponent<AudioSource>();
         soundSource.clip = soundEffect;
-        canLooseHealth = true;
+        shieldEnabled = false;
         bar = GameObject.Find("HealthBar").GetComponent<Slider>();
         updateSlider();
-    }
-
-    private void Update()
-    {
-        if (!canLooseHealth && Time.time - startShieldTime > 10.0f)
-        {
-            canLooseHealth = true;
-        }
+        powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
     }
 
     public void updateSlider()
@@ -43,7 +37,7 @@ public class HealthHandler : MonoBehaviour
 
     public void changeHealth(float value)
     {
-        if (!canLooseHealth && value < 0)
+        if (shieldEnabled && value < 0)
             return;
 
         if(value < 0)
@@ -64,7 +58,13 @@ public class HealthHandler : MonoBehaviour
 
     public void StartShield()
     {
-        canLooseHealth = false;
-        startShieldTime = Time.time;
+        shieldEnabled = true;
+        Invoke("DisableShield", 5f);
+    }
+
+    private void DisableShield()
+    {
+        shieldEnabled = false;
+        powerUpManager.disablePowerUp();
     }
 }

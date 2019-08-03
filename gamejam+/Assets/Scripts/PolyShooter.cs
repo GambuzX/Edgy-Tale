@@ -19,13 +19,13 @@ public class PolyShooter : MonoBehaviour
 
     //Power Ups
     private bool biggerBullets;
-    private float startBiggerBullets;
+
+    private PowerUpManager powerUpManager;
 
     // Start is called before the first frame update
     void Start()
     {
         biggerBullets = false;
-        startBiggerBullets = Time.time;
         soundSource = this.gameObject.AddComponent<AudioSource>();
         soundSource.clip = soundEffect;
         shootLock = false;
@@ -35,6 +35,7 @@ public class PolyShooter : MonoBehaviour
         }
         bulletPrefab = Resources.Load<GameObject>("Bullet");
         edginessHandler = GameObject.FindObjectOfType<EdginessHandler>();
+        powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
     }
 
     // Update is called once per frame
@@ -45,12 +46,6 @@ public class PolyShooter : MonoBehaviour
             shootLock = true;
             spawnBullets();
             Invoke("unlockShoot", shootDelay);
-        }
-
-        if (biggerBullets && Time.time - startBiggerBullets > 5.0f)
-        {
-            biggerBullets = false;
-            shootDelay *= 2.0f;
         }
     }
 
@@ -77,8 +72,15 @@ public class PolyShooter : MonoBehaviour
 
     public void StartBiggerBullets()
     {
-        startBiggerBullets = Time.time;
         biggerBullets = true;
         shootDelay /= 2.0f;
+        Invoke("DisableBiggerBullets", 5f);
+    }
+
+    public void DisableBiggerBullets()
+    {
+        biggerBullets = false;
+        shootDelay *= 2.0f;
+        powerUpManager.disablePowerUp();
     }
 }

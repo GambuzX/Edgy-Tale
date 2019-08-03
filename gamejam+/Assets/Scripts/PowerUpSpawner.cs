@@ -32,27 +32,8 @@ public class PowerUpSpawner : MonoBehaviour
     private void spawnPowerUp()
     {
         PowerUpType newPowerUp = PowerUp.GetPowerUp();
-        string powerUpName = "";
-        switch (newPowerUp)
-        {
-            case PowerUpType.Health:
-                powerUpName = "pill";
-                break;
-            case PowerUpType.Super_Edginess:
-                powerUpName = "blue_pill";
-                break;
-            case PowerUpType.Bullet:
-                powerUpName = "ammo";
-                break;
-            case PowerUpType.Points:
-                powerUpName = "dollar_sign";
-                break;
-            case PowerUpType.Shield:
-                powerUpName = "shield";
-                break;
-            default:
-                break;
-        }
+        string powerUpName = PowerUp.PowerUpName(newPowerUp);
+
         int index = Random.Range(0, nPos);
         GameObject gameObject = Instantiate(Resources.Load<GameObject>(powerUpName), spawnPositions[index].position, Quaternion.identity);
         
