@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     public float speed = 1f, rotateSpeed = 5f;
+
+    public float damage = 1f;
 
     private bool dissipating = false;
 
@@ -30,7 +32,7 @@ public class Bullet : MonoBehaviour
         if (dissipating)
         {
             Color tmp = GetComponent<SpriteRenderer>().color;
-            if(tmp.a < Time.deltaTime)
+            if (tmp.a < Time.deltaTime)
             {
                 tmp.a = 0;
             }
@@ -64,13 +66,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Polygon"))
         {
             soundSource.Play();
             this.GetComponent<CircleCollider2D>().enabled = false;
             this.GetComponent<SpriteRenderer>().enabled = false;
             this.GetComponent<TrailRenderer>().enabled = false;
-            Invoke("selfDestruct", 1);
+            GameObject.FindObjectOfType<HealthHandler>().changeHealth(-damage);
+            selfDestruct();
         }
     }
 }

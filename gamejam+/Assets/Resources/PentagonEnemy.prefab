@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 4978176412250307231}
   - component: {fileID: 4978176412250307228}
   - component: {fileID: 4978176412250307229}
+  - component: {fileID: 7948169601989248606}
   m_Layer: 0
   m_Name: PentagonEnemy
   m_TagString: Enemy
@@ -340,6 +341,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7948169601989248606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978176412250307217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16b63b796ab859488393f5c835b623d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4978176412845459490
 GameObject:
   m_ObjectHideFlags: 0
