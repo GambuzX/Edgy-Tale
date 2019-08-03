@@ -46,6 +46,11 @@ public class Bullet : MonoBehaviour
         this.direction = direction;
     }
 
+    public void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
     private void selfDestruct()
     {
         Destroy(this.gameObject);
