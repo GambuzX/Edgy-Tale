@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76656940eeab15a41bc7dfebfeed9fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot_edginess_cost: 0.01
+  shoot_edginess_cost: 0.005
   easter_egg_trigger: 10
   soundEffectGrow: {fileID: 8300000, guid: 7391d4bb37514854d954ea641f48ed46, type: 3}
   soundEffectUngrow: {fileID: 8300000, guid: e44ff2190138d0143bfcbe6516791daa, type: 3}

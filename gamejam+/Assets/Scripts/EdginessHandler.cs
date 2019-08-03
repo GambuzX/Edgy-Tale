@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EdginessHandler : MonoBehaviour
 {
-    public float shoot_edginess_cost = 0.01f;
+    public float shoot_edginess_cost = 0.005f;
     public int easter_egg_trigger = 50;
 
     private Slider bar;
@@ -34,11 +34,6 @@ public class EdginessHandler : MonoBehaviour
         updateSlider();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void updateSlider()
     {
         bar.value = edginess - (int) edginess;
@@ -52,7 +47,7 @@ public class EdginessHandler : MonoBehaviour
 
         edginess += inc;
 
-        if ((int)edginess != previous)
+        if ((int)edginess != previous && (previous > 3 || edginess > 3))
         {
             if((int)edginess < previous)
             {
@@ -63,7 +58,11 @@ public class EdginessHandler : MonoBehaviour
                 soundSource.clip = soundEffectGrow;
             }
             soundSource.Play();
-            
+
+            FindObjectOfType<PlayerMovement>().toggleEdgyTransformation();
+
+            FindObjectOfType<PlayerMovement>().Invoke("toggleEdgyTransformation", 0.5f);
+
             spriteHandler.changeSprite((int)edginess);
         }
 
@@ -85,7 +84,12 @@ public class EdginessHandler : MonoBehaviour
         }
         else
         {
-            addEdginess(-shoot_edginess_cost);
+            addEdginess(-shoot_edginess_cost * (int) edginess);
         }
+    }
+
+    public int getEdges()
+    {
+        return (int)edginess;
     }
 }

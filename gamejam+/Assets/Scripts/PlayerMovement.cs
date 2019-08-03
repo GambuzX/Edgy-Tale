@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private bool edgyTransformation = false;
+
     public float movementSpeed = 0.05f, rotateSpeed = 100f;
     private Vector2 movementDirection;
     private float vertical, horizontal;
@@ -24,16 +26,19 @@ public class PlayerMovement : MonoBehaviour
 
         Transform body = this.transform.GetComponentInChildren<PolyShooter>().transform;
         rotate = Input.GetAxis("Rotate");
+
         if(rotate != 0)
         {
             body.RotateAround(body.transform.parent.position, Vector3.forward, rotate*rotateSpeed * Time.deltaTime);
+        }
 
-            //body.Rotate(new Vector3(0, 0, 1), rotate * rotateSpeed);
+        if (edgyTransformation)
+        {
+            body.RotateAround(body.transform.parent.position, Vector3.forward, 10 * rotateSpeed * Time.deltaTime);
         }
 
         movementDirection = new Vector2(horizontal, vertical) * movementSpeed;
 
-        //this.gameObject.transform.Translate(movementDirection);
         Vector3 newPos = this.transform.position + new Vector3(movementDirection.x, movementDirection.y, 0);
 
         if (newPos.x > topRightCorner.x || newPos.x < bottomLeftCorner.x)
@@ -44,5 +49,10 @@ public class PlayerMovement : MonoBehaviour
 
 
         this.transform.position = newPos;
+    }
+
+    public void toggleEdgyTransformation()
+    {
+        edgyTransformation = !edgyTransformation;
     }
 }
