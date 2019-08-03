@@ -129,7 +129,7 @@ public class EdginessHandler : MonoBehaviour
         bar.value = 0;
         currentLevel.text = ((int)max_edges).ToString();
         nextLevel.text = ((int)max_edges + 1).ToString();
-
+        
         spawner.unleashGirlfriend(false);
     }
 

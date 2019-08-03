@@ -20,10 +20,8 @@ public class Polygon : MonoBehaviour
                 return "Hexagon";
             case 7:
                 return "Heptagon";
-            case 8:
-                return "Octagon";
             default:
-                return "Circle";
+                return "Octagon";
         }
     }
 
