@@ -4,19 +4,8 @@ using UnityEngine;
 
 public class SpriteHandler : MonoBehaviour
 {
-    private int player_sprites;  
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        player_sprites = 6;        
-    }
-
     private GameObject GetNewSprite(int edges)
     {
-        if (edges - 3 > player_sprites)
-            return null;
-
         return Resources.Load<GameObject>(Polygon.GetName(edges));
     }
 
@@ -32,5 +21,11 @@ public class SpriteHandler : MonoBehaviour
             new_object.transform.position = this.transform.position;
             new_object.transform.rotation = this.transform.rotation;
         }
+    }
+
+    public GameObject GetNewEnemy(int edges)
+    {
+        int n_edges = Random.Range(3, edges+1);
+        return Resources.Load<GameObject>(Polygon.GetEnemyName(n_edges));
     }
 }

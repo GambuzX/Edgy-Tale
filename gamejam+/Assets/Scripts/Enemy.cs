@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 
     public float speed = 1f;
     public float kill_points = 0.1f;
+    public float damage = 10f;
 
     private Transform player;
 
@@ -50,7 +51,7 @@ public class Enemy : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Polygon"))
         {
-            healthHandler.changeHealth(-10.0f);   
+            healthHandler.changeHealth(-damage);   
             Destroy(this.gameObject);
         }
     }

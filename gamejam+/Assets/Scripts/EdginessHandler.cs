@@ -34,11 +34,6 @@ public class EdginessHandler : MonoBehaviour
         updateSlider();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void updateSlider()
     {
         bar.value = edginess - (int) edginess;
@@ -87,5 +82,10 @@ public class EdginessHandler : MonoBehaviour
         {
             addEdginess(-shoot_edginess_cost);
         }
+    }
+
+    public int getEdges()
+    {
+        return (int)edginess;
     }
 }
