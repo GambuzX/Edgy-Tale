@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 1f;
+    public float speed = 1f, rotateSpeed = 5f;
 
-    private bool moving = false;
     private Vector3 direction = Vector3.zero;
 
     void Start()
@@ -17,16 +16,13 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(moving)
-        {
-            transform.Translate(direction * speed * Time.deltaTime);
-        }
+        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     public void setDirection(Vector3 direction)
     {
         this.direction = direction;
-        moving = true;
     }
 
     private void selfDestruct()

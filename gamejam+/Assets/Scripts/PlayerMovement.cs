@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float movementSpeed = 0.05f, rotateSpeed = 2f;
+    public float movementSpeed = 0.05f, rotateSpeed = 100f;
     private Vector2 movementDirection;
     private float vertical, horizontal;
     private float rotate;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         rotate = Input.GetAxis("Rotate");
         if(rotate != 0)
         {
-            body.RotateAround(body.transform.parent.position, Vector3.forward, rotate*rotateSpeed);
+            body.RotateAround(body.transform.parent.position, Vector3.forward, rotate*rotateSpeed * Time.deltaTime);
 
             //body.Rotate(new Vector3(0, 0, 1), rotate * rotateSpeed);
         }
