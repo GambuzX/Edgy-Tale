@@ -8,8 +8,13 @@ public class Bullet : MonoBehaviour
 
     private Vector3 direction = Vector3.zero;
 
+    public AudioClip soundEffect;
+
+    private AudioSource soundSource;
     void Start()
     {
+        soundSource = GetComponent<AudioSource>();
+        soundSource.clip = soundEffect;
         Invoke("selfDestruct", 5);
     }
 
@@ -32,6 +37,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        soundSource.Play();
+        this.enabled = false;
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<PolygonCollider2D>().enabled = false;
+        Invoke("selfDestruct", 1);
     }
 }

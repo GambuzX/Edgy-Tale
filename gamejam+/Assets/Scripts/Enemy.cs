@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
             soundSource.Play();
             this.enabled = false;
             this.GetComponent<SpriteRenderer>().enabled = false;
+            this.GetComponent<PolygonCollider2D>().enabled = false;
             Invoke("destroySelf", 1);
         }
     }

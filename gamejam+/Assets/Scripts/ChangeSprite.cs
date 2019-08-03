@@ -6,12 +6,17 @@ public class ChangeSprite : MonoBehaviour
 {
     public List<GameObject> player_sprites;
     private int number_of_edges;
-  
+
+    public AudioClip soundEffect;
+
+    private AudioSource soundSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < player_sprites.Count; i++)
+        soundSource = GetComponent<AudioSource>();
+        soundSource.clip = soundEffect;
+        for (int i = 0; i < player_sprites.Count; i++)
         {
             string polygon_name = Polygon.GetName(i + 3);
             player_sprites[i] = Resources.Load<GameObject>(polygon_name);
@@ -31,7 +36,7 @@ public class ChangeSprite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount > 600 && number_of_edges < 4)
+        if (Time.time > 10 && number_of_edges < 4)
         {
             string object_name = Polygon.GetName(number_of_edges);
             GameObject new_object = GetNewSprite(++number_of_edges);
@@ -43,6 +48,7 @@ public class ChangeSprite : MonoBehaviour
                 new_object.transform.parent = this.transform;
                 new_object.transform.position = this.transform.position;
                 new_object.transform.rotation = this.transform.rotation;
+                soundSource.Play();
             }           
         }
     }
