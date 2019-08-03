@@ -77,8 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995db0cc37b59684c8770c6b29d33e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3572357292335366352, guid: 8d11d8a83b2f2e94da7eadf718846767,
-    type: 3}
   shootDelay: 1
 --- !u!212 &6670441155323339236
 SpriteRenderer:

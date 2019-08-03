@@ -5,10 +5,10 @@ using UnityEngine;
 public class PolyShooter : MonoBehaviour
 {
 
-    public GameObject bulletPrefab;
     public float shootDelay = 0.4f;
 
     private List<Transform> childVertices = new List<Transform>();
+    private GameObject bulletPrefab;
 
     private bool shootLock;
 
@@ -20,6 +20,7 @@ public class PolyShooter : MonoBehaviour
         {
             childVertices.Add(child);
         }
+        bulletPrefab = Resources.Load<GameObject>("Bullet");
     }
 
     // Update is called once per frame
