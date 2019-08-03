@@ -58,9 +58,10 @@ public class Spawner : MonoBehaviour
         CancelInvoke();
     }
 
-    public void unleashGirlfriend()
+    public void unleashGirlfriend(bool trueEnding)
     {
         int index = Random.Range(0, nPos);
-        Instantiate(spriteHandler.GetGirlfriend(), spawnPositions[index].position, Quaternion.identity);
+        GameObject gf = Instantiate(spriteHandler.GetGirlfriend(), spawnPositions[index].position, Quaternion.identity);
+        gf.GetComponent<Girlfriend>().setEnding(trueEnding);
     }
 }

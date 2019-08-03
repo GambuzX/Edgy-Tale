@@ -31,6 +31,20 @@ public class SpriteHandler : MonoBehaviour
         }
     }
 
+    public void playerTrueEndingFace()
+    {
+        GameObject player = GameObject.FindObjectOfType<PlayerMovement>().gameObject;
+        foreach(Transform child in player.transform)
+        {
+            if (child.name == "Face")
+            {
+                Destroy(child.gameObject);
+                break;
+            }
+        }
+        Instantiate(Resources.Load<GameObject>("EdgyFace"), player.transform);
+    }
+
     public GameObject GetNewEnemy(int edges)
     {
         int n_edges = Random.Range(3, edges+1);

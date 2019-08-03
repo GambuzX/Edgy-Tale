@@ -13,28 +13,35 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 topRightCorner, bottomLeftCorner;
 
+    private Transform body;
+
     void Start()
     {
         topRightCorner = GameObject.Find("TopRightCorner").transform.position;
         bottomLeftCorner = GameObject.Find("BottomLeftCorner").transform.position;
+
+        body = this.transform.GetComponentInChildren<Rigidbody2D>().transform;
     }
 
     void Update()
     {
+
+        if (body == null)
+            body = this.transform.GetComponentInChildren<Rigidbody2D>().transform;
+
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-
-        Transform body = this.transform.GetComponentInChildren<PolyShooter>().transform;
+        
         rotate = Input.GetAxis("Rotate");
 
         if(rotate != 0)
         {
-            body.RotateAround(body.transform.parent.position, Vector3.forward, rotate*rotateSpeed * Time.deltaTime);
+            this.rotatePlayer(rotate * rotateSpeed);
         }
 
         if (edgyTransformation)
         {
-            body.RotateAround(body.transform.parent.position, Vector3.forward, 10 * rotateSpeed * Time.deltaTime);
+            this.rotatePlayer(10 * rotateSpeed);
         }
 
         movementDirection = new Vector2(horizontal, vertical) * movementSpeed;
@@ -54,5 +61,10 @@ public class PlayerMovement : MonoBehaviour
     public void toggleEdgyTransformation()
     {
         edgyTransformation = !edgyTransformation;
+    }
+
+    public void rotatePlayer(float angle)
+    {
+        body.RotateAround(body.transform.parent.position, Vector3.forward, angle * Time.deltaTime);
     }
 }
