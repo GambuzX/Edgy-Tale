@@ -29,6 +29,13 @@ public class EdginessHandler : MonoBehaviour
     private bool trueEndingRotate;
     private bool endingReached;
 
+    //Power Ups
+    private bool canLooseEdginess;
+    private float startShieldTime;
+
+    private bool duplicatePoints;
+    private float startDuplicatePoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +50,13 @@ public class EdginessHandler : MonoBehaviour
         trueEndingRotate = false;
         endingReached = false;
 
+        //Power Ups
+        canLooseEdginess = true;
+        startShieldTime = Time.time;
+
+        duplicatePoints = false;
+        startDuplicatePoints = Time.time;
+
         edginess = 3f;
         egg_counter = 0;
         updateSlider();
@@ -54,6 +68,27 @@ public class EdginessHandler : MonoBehaviour
         {
             playerMovement.rotatePlayer(1000f);
         }
+
+        if (!canLooseEdginess && Time.time - startShieldTime > 10.0f)
+        {
+            canLooseEdginess = true;
+        }
+        if(duplicatePoints && Time.time - startDuplicatePoints > 5.0f)
+        {
+            duplicatePoints = false;
+        }
+    }
+
+    public void StartEdginessShield()
+    {
+        startShieldTime = Time.time;
+        canLooseEdginess = false;
+    }
+
+    public void StartDuplicatePoints()
+    {
+        startDuplicatePoints = Time.time;
+        duplicatePoints = true;
     }
 
     public void updateSlider()
@@ -66,6 +101,14 @@ public class EdginessHandler : MonoBehaviour
     public void addEdginess(float inc)
     {
         if (shoot_cost_lock) return;
+
+        if (!canLooseEdginess && inc < 0)
+            return;
+
+        if(inc > 0f && duplicatePoints)
+        {
+            inc *= 2.0f;
+        }
 
         int previous = (int)edginess;
 

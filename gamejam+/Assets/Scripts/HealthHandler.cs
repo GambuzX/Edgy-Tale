@@ -8,14 +8,26 @@ public class HealthHandler : MonoBehaviour
     public float health_cost = 0.01f;
 
     private Slider bar;
-
     public PlayerHealth player_health;
+
+    //Power Ups
+    private bool canLooseHealth;
+    private float startShieldTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        canLooseHealth = true;
         bar = GameObject.Find("HealthBar").GetComponent<Slider>();
         updateSlider();
+    }
+
+    private void Update()
+    {
+        if (!canLooseHealth && Time.time - startShieldTime > 10.0f)
+        {
+            canLooseHealth = true;
+        }
     }
 
     public void updateSlider()
@@ -25,6 +37,9 @@ public class HealthHandler : MonoBehaviour
 
     public void changeHealth(float value)
     {
+        if (!canLooseHealth && value < 0)
+            return;
+
         if(value < 0)
         {
             player_health.DecreaseHealth(-value);
@@ -38,5 +53,11 @@ public class HealthHandler : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void StartShield()
+    {
+        canLooseHealth = false;
+        startShieldTime = Time.time;
     }
 }
