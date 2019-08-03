@@ -30,7 +30,7 @@ public class PolyShooter : MonoBehaviour
     void Update()
     {
 
-        if (!shootLock && Input.GetButtonDown("Fire1"))
+        if (!shootLock && Input.GetButton("Fire1"))
         {
             shootLock = true;
             spawnBullets();
