@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EdginessHandler : MonoBehaviour
 {
-    public float shoot_edginess_cost = 0.01f;
+    public float shoot_edginess_cost = 0.005f;
     public int easter_egg_trigger = 50;
 
     private Slider bar;
@@ -32,11 +32,6 @@ public class EdginessHandler : MonoBehaviour
         edginess = 3f;
         egg_counter = 0;
         updateSlider();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     public void updateSlider()
@@ -89,7 +84,12 @@ public class EdginessHandler : MonoBehaviour
         }
         else
         {
-            addEdginess(-shoot_edginess_cost);
+            addEdginess(-shoot_edginess_cost * (int) edginess);
         }
+    }
+
+    public int getEdges()
+    {
+        return (int)edginess;
     }
 }

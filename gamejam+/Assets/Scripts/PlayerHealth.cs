@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
         initialTime = Time.time;
         time_since_lost_health = Time.time;
         healthHandler = GameObject.FindObjectOfType<HealthHandler>();
+        healthHandler.updateSlider();
     }
 
     // Update is called once per frame

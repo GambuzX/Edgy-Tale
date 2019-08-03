@@ -6,6 +6,8 @@ edgy_face: https://storage.needpix.com/rsynced_images/cartoon-2028601_1280.png
 
 girl_face: https://cdn.pixabay.com/photo/2018/04/27/16/38/female-3355169_960_720.png
 
+mexican: https://cdn.pixabay.com/photo/2017/01/12/18/00/sombrero-1975267_960_720.png
+
 
 SHAPES
 --------------------
