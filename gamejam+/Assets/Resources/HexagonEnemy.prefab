@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aaab2ca472d3ad49a1e93085576da5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: b05d8195d750e3b4c8d6db77285a8e55, type: 3}
   speed: 7
   kill_points: 0.1
   damage: 10

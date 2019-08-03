@@ -28,7 +28,6 @@ public class PowerUp : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(type);
         switch (type)
         {
             case PowerUpType.Health:
