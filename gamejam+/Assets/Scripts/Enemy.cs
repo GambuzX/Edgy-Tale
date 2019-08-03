@@ -11,12 +11,14 @@ public class Enemy : MonoBehaviour
     private Transform player;
 
     private EdginessHandler edginessHandler;
+    private HealthHandler healthHandler;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerMovement>().transform;
         edginessHandler = GameObject.FindObjectOfType<EdginessHandler>();
+        healthHandler = GameObject.FindObjectOfType<HealthHandler>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,12 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.GetComponent<Bullet>())
         {
             edginessHandler.addEdginess(kill_points);
+            Destroy(this.gameObject);
+        }
+        
+        if (collision.gameObject.CompareTag("Polygon"))
+        {
+            healthHandler.changeHealth(-10.0f);   
             Destroy(this.gameObject);
         }
     }
