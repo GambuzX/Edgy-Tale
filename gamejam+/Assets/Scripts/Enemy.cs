@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float speed = 1f;
     public float kill_points = 0.1f;
     public float damage = 10f;
+    public float health = 1f;
 
     private Transform player;
 
@@ -38,7 +39,6 @@ public class Enemy : MonoBehaviour
         if (wasHit)
         {
             transform.Rotate(Vector3.forward, 1000 * Time.deltaTime);
-            transform.localScale = Vector3.one - Vector3.one * Time.deltaTime; 
         }
     }
 
@@ -46,16 +46,15 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Bullet>())
         {
-            soundSource.Play();
-            /*foreach(Transform child in transform)
+            health -= 1f;
+            if (health <= 0 && !wasHit)
             {
-                if (child.GetComponent<SpriteRenderer>())
-                    child.GetComponent<SpriteRenderer>().enabled = false;
-            }*/
-            wasHit = true;
-            this.GetComponent<PolygonCollider2D>().enabled = false;
-            edginessHandler.addEdginess(kill_points);
-            Invoke("destroySelf", 1);
+                soundSource.Play();
+                wasHit = true;
+                this.GetComponent<PolygonCollider2D>().enabled = false;
+                edginessHandler.addEdginess(kill_points);
+                Invoke("destroySelf", 1);
+            }
         }
         
         if (collision.gameObject.CompareTag("Polygon"))
