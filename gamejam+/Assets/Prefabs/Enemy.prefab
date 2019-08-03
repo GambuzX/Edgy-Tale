@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8011842663047928042}
   - component: {fileID: 7955079990137482490}
   - component: {fileID: 8794234403997171707}
+  - component: {fileID: 1581307615532133614}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: ecf3e1457904f2647b4dfe1180f2e468, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -93,3 +94,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &1581307615532133614
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690244242953454423}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.048, y: 2.048}
+    newSize: {x: 10.24, y: 10.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.94600004, y: 0.82800007}
+      - {x: 0.82000005, y: 0.95400006}
+      - {x: 0.708, y: 0.95400006}
+      - {x: 0.586, y: 0.832}
+      - {x: 0.374, y: 0.88400006}
+      - {x: 0.23200001, y: 0.95400006}
+      - {x: -0.82800007, y: 0.95400006}
+      - {x: -0.95400006, y: 0.82800007}
+      - {x: -0.95400006, y: -0.59000003}
+      - {x: -0.59400004, y: -0.94600004}
+      - {x: 0.586, y: -0.94600004}
+      - {x: 0.59000003, y: -0.94200003}
+      - {x: 0.716, y: -0.82400006}
+      - {x: 0.94600004, y: -0.6}
