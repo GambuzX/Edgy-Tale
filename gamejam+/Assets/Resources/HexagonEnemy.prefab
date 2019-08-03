@@ -89,9 +89,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8408266091864614736}
-  - component: {fileID: 8408266091864614737}
   - component: {fileID: 8408266091864614738}
   - component: {fileID: 8408266091864614739}
+  - component: {fileID: -2266763520075568302}
   m_Layer: 0
   m_Name: HexagonEnemy
   m_TagString: Enemy
@@ -116,23 +116,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8408266091864614737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8408266091864614751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59fb08d3c3f99c64d8a6a126a43dee3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundEffect: {fileID: 8300000, guid: b05d8195d750e3b4c8d6db77285a8e55, type: 3}
-  speed: 7
-  kill_points: 0.1
-  damage: 20
-  health: 1
 --- !u!60 &8408266091864614738
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -261,6 +244,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2266763520075568302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408266091864614751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aaab2ca472d3ad49a1e93085576da5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 0}
+  speed: 7
+  kill_points: 0.1
+  damage: 10
+  health: 1
+  rotateSpeed: 1000
 --- !u!1 &8408266092312776019
 GameObject:
   m_ObjectHideFlags: 0

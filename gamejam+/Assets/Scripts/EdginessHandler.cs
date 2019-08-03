@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EdginessHandler : MonoBehaviour
 {
     public float shoot_edginess_cost = 0.005f;
-    public int easter_egg_trigger = 50;
+    public int easter_egg_trigger = 10;
 
     public int max_edges = 8;
 
@@ -24,6 +24,10 @@ public class EdginessHandler : MonoBehaviour
     private AudioSource soundSource;
     private Spawner spawner;
 
+    private PlayerMovement playerMovement;
+
+    private bool trueEndingRotate;
+    private bool endingReached;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +38,22 @@ public class EdginessHandler : MonoBehaviour
         nextLevel = GameObject.Find("NextEdges").GetComponent<Text>();
         spriteHandler = GameObject.FindObjectOfType<SpriteHandler>();
         spawner = GameObject.FindObjectOfType<Spawner>();
+        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+
+        trueEndingRotate = false;
+        endingReached = false;
+
         edginess = 3f;
         egg_counter = 0;
         updateSlider();
+    }
+
+    private void Update()
+    {
+        if (trueEndingRotate)
+        {
+            playerMovement.rotatePlayer(1000f);
+        }
     }
 
     public void updateSlider()
@@ -77,7 +94,7 @@ public class EdginessHandler : MonoBehaviour
         updateSlider();
         egg_counter = 0;
 
-        if ((int) edginess >= max_edges )
+        if ((int) edginess > max_edges )
         {
             triggerGameOver();
         }
@@ -85,13 +102,13 @@ public class EdginessHandler : MonoBehaviour
 
     public void handleShoot()
     {
-        if (edginess-3f < 10e-6)
+        if (!endingReached && edginess-3f < 10e-6)
         {
             egg_counter += 1;
 
             if (egg_counter >= easter_egg_trigger)
             {
-                Debug.Log("Won game");
+                TrueEnding();
             }
         }
         else
@@ -107,19 +124,52 @@ public class EdginessHandler : MonoBehaviour
 
     private void triggerGameOver()
     {
-        spawner.stopSpawning();
+        StopGame();
 
         bar.value = 0;
         currentLevel.text = ((int)max_edges).ToString();
-        nextLevel.text = "∞";
+        nextLevel.text = ((int)max_edges + 1).ToString();
 
+        spawner.unleashGirlfriend(false);
+    }
+
+    private void StopGame()
+    {
         shoot_cost_lock = true;
-
-        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
+        spawner.stopSpawning();
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             Destroy(obj);
         }
+    }
 
-        spawner.unleashGirlfriend();
+    private void TrueEnding()
+    {
+        StopGame();
+        egg_counter = 0;
+        trueEndingRotate = true;
+        endingReached = true;
+        soundSource.clip = soundEffectGrow;
+        soundSource.loop = true;
+        soundSource.Play();
+        Invoke("TransformIntoCircle", 5f);
+
+    }
+
+    private void TransformIntoCircle()
+    {
+        soundSource.Stop();
+        soundSource.loop = false;
+        trueEndingRotate = false;
+
+        spriteHandler.changeSprite(0);
+
+        spriteHandler.playerTrueEndingFace();
+
+        bar.value = 1;
+        currentLevel.text = "0";
+        nextLevel.text = "0";
+
+        spawner.unleashGirlfriend(true);
     }
 }

@@ -7,22 +7,22 @@ public class Enemy : MonoBehaviour
 
     public AudioClip soundEffect;
 
-    private AudioSource soundSource;
+    protected AudioSource soundSource;
 
     public float speed = 1f;
     public float kill_points = 0.1f;
     public float damage = 10f;
     public float health = 1f;
 
-    private Transform player;
+    protected Transform player;
 
-    bool wasHit = false;
+    protected bool wasHit = false;
 
-    private EdginessHandler edginessHandler;
-    private HealthHandler healthHandler;
+    protected EdginessHandler edginessHandler;
+    protected HealthHandler healthHandler;
 
     // Start is called before the first frame update
-    void Start()
+   protected void Start()
     {
         soundSource = GetComponent<AudioSource>();
         soundSource.clip = soundEffect; 
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Bullet>())
         {
@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void destroySelf()
+    protected void destroySelf()
     {
         Destroy(this.gameObject);
     }
