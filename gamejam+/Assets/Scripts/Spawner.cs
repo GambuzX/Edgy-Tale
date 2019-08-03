@@ -7,8 +7,8 @@ public class Spawner : MonoBehaviour
     public GameObject enemy;
 
     public int decrementSpawnRateTime = 20;
-    public int spawnRate = 5;
-    public int minimumSpawnRate = 1;
+    public float spawnRate = 5f;
+    public float minimumSpawnRate = 1f;
 
     private Transform[] spawnPositions = new Transform[20];
     private int nPos = 0;
@@ -42,6 +42,6 @@ public class Spawner : MonoBehaviour
 
     private void decrementSpawnRate()
     {
-        if (spawnRate > minimumSpawnRate) spawnRate--;
+        if (spawnRate > minimumSpawnRate) spawnRate -= 0.5f;
     }
 }
