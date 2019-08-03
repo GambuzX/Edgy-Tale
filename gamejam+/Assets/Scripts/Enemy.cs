@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 
     private Transform player;
 
+    bool wasHit = false;
+
     private EdginessHandler edginessHandler;
     private HealthHandler healthHandler;
 
@@ -32,6 +34,12 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+        if (wasHit)
+        {
+            transform.Rotate(Vector3.forward, 1000 * Time.deltaTime);
+            transform.localScale = Vector3.one - Vector3.one * Time.deltaTime; 
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,11 +47,12 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.GetComponent<Bullet>())
         {
             soundSource.Play();
-            foreach(Transform child in transform)
+            /*foreach(Transform child in transform)
             {
                 if (child.GetComponent<SpriteRenderer>())
                     child.GetComponent<SpriteRenderer>().enabled = false;
-            }
+            }*/
+            wasHit = true;
             this.GetComponent<PolygonCollider2D>().enabled = false;
             edginessHandler.addEdginess(kill_points);
             Invoke("destroySelf", 1);
@@ -51,8 +60,10 @@ public class Enemy : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Polygon"))
         {
-            healthHandler.changeHealth(-damage);   
-            Destroy(this.gameObject);
+            healthHandler.changeHealth(-damage);
+            wasHit = true;
+            this.GetComponent<PolygonCollider2D>().enabled = false;
+            Invoke("destroySelf", 1);
         }
     }
 
