@@ -17,9 +17,15 @@ public class PolyShooter : MonoBehaviour
 
     private EdginessHandler edginessHandler;
 
+    //Power Ups
+    private bool biggerBullets;
+    private float startBiggerBullets;
+
     // Start is called before the first frame update
     void Start()
     {
+        biggerBullets = false;
+        startBiggerBullets = Time.time;
         soundSource = this.gameObject.AddComponent<AudioSource>();
         soundSource.clip = soundEffect;
         shootLock = false;
@@ -34,12 +40,17 @@ public class PolyShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (!shootLock && Input.GetButton("Fire1"))
         {
             shootLock = true;
             spawnBullets();
             Invoke("unlockShoot", shootDelay);
+        }
+
+        if (biggerBullets && Time.time - startBiggerBullets > 5.0f)
+        {
+            biggerBullets = false;
+            shootDelay *= 2.0f;
         }
     }
 
@@ -50,6 +61,10 @@ public class PolyShooter : MonoBehaviour
         {
             Vector3 bulletDir = (child.position - transform.position).normalized;
             GameObject bullet = Instantiate(bulletPrefab, child.position, Quaternion.identity);
+            if (biggerBullets)
+            {
+                bullet.transform.localScale *= 2;
+            }
             bullet.GetComponent<Bullet>().setDirection(bulletDir);
         }
         edginessHandler.handleShoot();
@@ -58,5 +73,12 @@ public class PolyShooter : MonoBehaviour
     void unlockShoot()
     {
         this.shootLock = false;
+    }
+
+    public void StartBiggerBullets()
+    {
+        startBiggerBullets = Time.time;
+        biggerBullets = true;
+        shootDelay /= 2.0f;
     }
 }

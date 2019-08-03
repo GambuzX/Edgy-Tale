@@ -29,9 +29,9 @@ public class Girlfriend : MonoBehaviour
         if (distance <= stopDistance)
         {
             if (trueEnding)
-                TrueEnding();
+                EndGame("GirlfriendMsgWin");
             else
-                EndGame();
+                EndGame("GirlfriendMsgLose");
         }
         if (!movement_lock)
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
@@ -42,10 +42,16 @@ public class Girlfriend : MonoBehaviour
         trueEnding = ending;
     }
 
-    private void EndGame()
+    private void EndGame(string UI_object)
     {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Minimap");
+        foreach(GameObject gameObject in gameObjects)
+        {
+            gameObject.SetActive(false);
+        }
+
         movement_lock = true;
-        foreach(Transform obj in GameObject.Find("GirlfriendMsgLose").transform)
+        foreach(Transform obj in GameObject.Find(UI_object).transform)
         {
             obj.gameObject.SetActive(true);
         }
@@ -53,17 +59,12 @@ public class Girlfriend : MonoBehaviour
         if (player.GetComponentInChildren<PolyShooter>())
             player.GetComponentInChildren<PolyShooter>().enabled = false;
 
-        //Invoke game over screen
+        Invoke("ReturnToMenu", 10f);
     }
 
-    private void TrueEnding()
+    private void ReturnToMenu()
     {
-        movement_lock = true;
-        foreach (Transform obj in GameObject.Find("GirlfriendMsgWin").transform)
-        {
-            obj.gameObject.SetActive(true);
-        }
-        player.GetComponent<PlayerMovement>().enabled = false;
+        GameObject.FindObjectOfType<LevelManager>().LoadScene("Menu");
     }
     
     private void increaseSpeed()
