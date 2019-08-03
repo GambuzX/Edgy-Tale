@@ -6,13 +6,17 @@ public class Enemy : MonoBehaviour
 {
 
     public float speed = 1f;
+    public float kill_points = 0.1f;
 
     private Transform player;
+
+    private EdginessHandler edginessHandler;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindObjectOfType<PlayerMovement>().transform;   
+        player = GameObject.FindObjectOfType<PlayerMovement>().transform;
+        edginessHandler = GameObject.FindObjectOfType<EdginessHandler>();
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Bullet>())
         {
+            edginessHandler.addEdginess(kill_points);
             Destroy(this.gameObject);
         }
     }
