@@ -291,7 +291,7 @@ MonoBehaviour:
   soundEffect: {fileID: 8300000, guid: b05d8195d750e3b4c8d6db77285a8e55, type: 3}
   speed: 5
   kill_points: 0.1
-  damage: 50
+  damage: 30
   health: 10
 --- !u!60 &2499394812448492911
 PolygonCollider2D:

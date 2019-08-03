@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected void destroySelf()
+    public void destroySelf()
     {
         Destroy(this.gameObject);
     }
