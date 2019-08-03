@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     private float initialTime;
     private float time_since_lost_health;
     private HealthHandler healthHandler;
+
+    public Canvas canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -48,10 +51,31 @@ public class PlayerHealth : MonoBehaviour
         health -= value;
         if(health <= .0f)
         {
-            Destroy(this.gameObject);
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject gameObject in enemies)
+            {
+                Debug.Log(gameObject.name);
+                gameObject.GetComponent<Enemy>().enabled = false;
+            }
+
+            this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+            this.gameObject.GetComponentInChildren<PolyShooter>().enabled = false;
+
+            foreach (Transform transform in canvas.transform)
+            {
+                transform.gameObject.SetActive(!transform.gameObject.activeSelf);
+            }
+            //Destroy(this.gameObject);
         }
         healthHandler.updateSlider();
         time_since_lost_health = Time.time;
         initialTime = Time.time;
+    }
+
+
+    IEnumerator DeathScreen()
+    {
+        Destroy(this.gameObject);
+        yield return null;
     }
 }
