@@ -47,7 +47,7 @@ public class Girlfriend : MonoBehaviour
     
     private void increaseSpeed()
     {
-        speed += 0.1f;
+        speed += 0.2f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

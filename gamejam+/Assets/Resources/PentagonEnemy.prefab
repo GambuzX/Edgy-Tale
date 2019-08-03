@@ -211,8 +211,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffect: {fileID: 8300000, guid: b05d8195d750e3b4c8d6db77285a8e55, type: 3}
   speed: 1
-  kill_points: 0.1
-  damage: 10
+  kill_points: 0.2
+  damage: 15
+  health: 5
 --- !u!60 &4978176412250307228
 PolygonCollider2D:
   m_ObjectHideFlags: 0
