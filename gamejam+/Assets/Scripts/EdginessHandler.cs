@@ -11,6 +11,8 @@ public class EdginessHandler : MonoBehaviour
     private Slider bar;
     private Text currentLevel, nextLevel;
 
+    private SpriteHandler spriteHandler;
+
     private float edginess;
     private int egg_counter;
 
@@ -20,6 +22,7 @@ public class EdginessHandler : MonoBehaviour
         bar = GameObject.Find("EdginessBar").GetComponent<Slider>();
         currentLevel = GameObject.Find("CurrentEdges").GetComponent<Text>();
         nextLevel = GameObject.Find("NextEdges").GetComponent<Text>();
+        spriteHandler = GameObject.FindObjectOfType<SpriteHandler>();
         edginess = 3f;
         egg_counter = 0;
         updateSlider();
@@ -39,7 +42,15 @@ public class EdginessHandler : MonoBehaviour
 
     public void addEdginess(float inc)
     {
+        int previous = (int)edginess;
+
         edginess += inc;
+
+        if ((int)edginess != previous)
+        {
+            spriteHandler.changeSprite((int)edginess);
+        }
+
         if (edginess < 3f) edginess = 3f;
         updateSlider();
         egg_counter = 0;

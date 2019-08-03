@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot_edginess_cost: 0.01
-  easter_egg_trigger: 5
+  easter_egg_trigger: 10
