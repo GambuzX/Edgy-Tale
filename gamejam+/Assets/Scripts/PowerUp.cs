@@ -13,6 +13,10 @@ public enum PowerUpType
 
 public class PowerUp : MonoBehaviour
 {
+    public AudioClip soundEffect;
+
+    private AudioSource soundSource;
+
     public static float health;
     public static PowerUpType GetPowerUp()
     {
@@ -28,6 +32,8 @@ public class PowerUp : MonoBehaviour
 
     void Start()
     {
+        soundSource = GetComponent<AudioSource>();
+        soundSource.clip = soundEffect;
         switch (type)
         {
             case PowerUpType.Health:
@@ -52,6 +58,7 @@ public class PowerUp : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Polygon"))
         {
+            soundSource.Play();
             switch (type)
             {
                 case PowerUpType.Health:
@@ -72,7 +79,9 @@ public class PowerUp : MonoBehaviour
                 default:
                     break;
             }
-            Destroy(this.gameObject);
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            this.GetComponent<Collider2D>().enabled = false;
+            Invoke("DestroySelf", 1);
         }
     }
 
