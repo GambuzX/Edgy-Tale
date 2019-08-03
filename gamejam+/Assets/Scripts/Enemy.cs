@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private Transform player;
 
     private EdginessHandler edginessHandler;
+    private HealthHandler healthHandler;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
         soundSource.clip = soundEffect; 
         player = GameObject.FindObjectOfType<PlayerMovement>().transform;
         edginessHandler = GameObject.FindObjectOfType<EdginessHandler>();
+        healthHandler = GameObject.FindObjectOfType<HealthHandler>();
     }
 
     // Update is called once per frame
@@ -40,6 +42,12 @@ public class Enemy : MonoBehaviour
             this.GetComponent<SpriteRenderer>().enabled = false;
             edginessHandler.addEdginess(kill_points);
             Invoke("destroySelf", 1);
+        }
+        
+        if (collision.gameObject.CompareTag("Polygon"))
+        {
+            healthHandler.changeHealth(-10.0f);   
+            Destroy(this.gameObject);
         }
     }
 

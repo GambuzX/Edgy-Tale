@@ -20,7 +20,7 @@ public class PolyShooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundSource = GetComponent<AudioSource>();
+        soundSource = this.gameObject.AddComponent<AudioSource>();
         soundSource.clip = soundEffect;
         shootLock = false;
         foreach(Transform child in transform)

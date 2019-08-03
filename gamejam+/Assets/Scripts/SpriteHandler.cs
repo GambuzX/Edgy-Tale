@@ -9,7 +9,7 @@ public class SpriteHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player_sprites = 2;        
+        player_sprites = 6;        
     }
 
     private GameObject GetNewSprite(int edges)

@@ -2,6 +2,10 @@ Eyes: https://pixabay.com/vectors/smiley-eyes-happy-face-crazy-39984/
 
 angry face: https://www.maxpixel.net/Evil-Smiley-Anger-Criminal-Face-Emoji-Emoticon-3322465
 
+edgy_face: https://storage.needpix.com/rsynced_images/cartoon-2028601_1280.png
+
+girl_face: https://cdn.pixabay.com/photo/2018/04/27/16/38/female-3355169_960_720.png
+
 
 SHAPES
 --------------------
@@ -16,6 +20,10 @@ Hexagon: https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Hexagon.svg/6
 Heptagon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Basic_heptagon.svg/2000px-Basic_heptagon.svg.png
 
 Octagon: https://cdn.pixabay.com/photo/2017/07/21/13/42/octagon-2525760_960_720.png
+
+Circle: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/1024px-Circle_-_black_simple.svg.png
+
+decagon: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Regular_decagon.svg/1024px-Regular_decagon.svg.png
 
 
 
@@ -32,3 +40,10 @@ Winter Hat: https://cdn.pixabay.com/photo/2014/04/02/16/22/cap-307049_960_720.pn
 Fez: https://cdn.pixabay.com/photo/2017/12/18/11/51/isolated-3025971_960_720.png
 
 Chef Hat: http://res.publicdomainfiles.com/pdf_view/74/13932425414082.png
+
+girl hat: https://cdn.pixabay.com/photo/2012/04/16/13/01/hat-35910_960_720.png
+
+
+
+Dialog box: https://storage.needpix.com/rsynced_images/speech-34419_1280.png
+Thought bubble: https://cdn.pixabay.com/photo/2014/04/02/10/57/thought-bubble-305053_960_720.png

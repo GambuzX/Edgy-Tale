@@ -24,7 +24,7 @@ public class EdginessHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundSource = GameObject.FindObjectOfType<AudioSource>();
+        soundSource = this.GetComponent<AudioSource>();
         bar = GameObject.Find("EdginessBar").GetComponent<Slider>();
         currentLevel = GameObject.Find("CurrentEdges").GetComponent<Text>();
         nextLevel = GameObject.Find("NextEdges").GetComponent<Text>();
