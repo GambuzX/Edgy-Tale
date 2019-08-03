@@ -43,8 +43,9 @@ GameObject:
   - component: {fileID: 5793989982549290833}
   - component: {fileID: -5169368994420065683}
   - component: {fileID: 6898572045328938984}
+  - component: {fileID: 8988364719718507836}
   m_Layer: 0
-  m_Name: square
+  m_Name: Square
   m_TagString: Polygon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,6 +179,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!68 &8988364719718507836
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025386482122916273}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -4.075588, y: 3.9727426}
+  - {x: 4.0354195, y: -4.133257}
 --- !u!1 &5148814989927282056
 GameObject:
   m_ObjectHideFlags: 0
