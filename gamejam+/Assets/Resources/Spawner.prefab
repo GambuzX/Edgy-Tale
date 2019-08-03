@@ -104,11 +104,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5109631383091837200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c9558ea132c56459e8d586b643d26a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d61d49480f5d8245b99e434f5c8dac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4690244242953454423, guid: d4ba8dfa19c2aa54c8e2f69142ecbfbb, type: 3}
-  decrementSpawnRateTime: 60
+  enemy: {fileID: 0}
+  decrementSpawnRateTime: 20
   spawnRate: 5
   minimumSpawnRate: 1
 --- !u!1 &7338894279294577705
