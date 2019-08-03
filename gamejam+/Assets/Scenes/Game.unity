@@ -1952,6 +1952,6 @@ PrefabInstance:
         type: 3}
       propertyPath: soundEffectUngrow
       value: 
-      objectReference: {fileID: 8300000, guid: 5c53d11a32c9a9e43acd96c58f767710, type: 3}
+      objectReference: {fileID: 8300000, guid: 6454e671fd1e7694d9f753450c197d33, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53012abc8c1b4e942b932cf767237f26, type: 3}
