@@ -52,7 +52,7 @@ public class EdginessHandler : MonoBehaviour
 
         edginess += inc;
 
-        if ((int)edginess != previous && previous > 3)
+        if ((int)edginess != previous && (previous > 3 || edginess > 3))
         {
             if((int)edginess < previous)
             {
