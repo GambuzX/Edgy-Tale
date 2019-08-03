@@ -17,7 +17,7 @@ public class Girlfriend : MonoBehaviour
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerMovement>().transform;
-        InvokeRepeating("increaseSpeed", 2f, 2f);
+        InvokeRepeating("increaseSpeed", 1f, 1f);
 
         movement_lock = false;
     }

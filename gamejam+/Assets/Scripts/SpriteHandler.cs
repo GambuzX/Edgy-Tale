@@ -18,15 +18,22 @@ public class SpriteHandler : MonoBehaviour
             new_object = Instantiate(new_object);
             new_object.name = Polygon.GetName(number_of_edges);
             new_object.transform.parent = this.transform;
-            float x = 0, y = 0;
-            int number_vertices = 0;
-            foreach(Transform transform in new_object.transform)
+            if (new_object.name != "Circle")
             {
-                x += transform.position.x;
-                y += transform.position.y;
-                number_vertices++;
+                float x = 0, y = 0;
+                int number_vertices = 0;
+                foreach (Transform transform in new_object.transform)
+                {
+                    x += transform.position.x;
+                    y += transform.position.y;
+                    number_vertices++;
+                }
+                new_object.transform.position = new Vector3(this.transform.position.x - x / number_vertices, this.transform.position.y - y / number_vertices, 0);
             }
-            new_object.transform.position = new Vector3(this.transform.position.x - x / number_vertices, this.transform.position.y - y / number_vertices, 0);
+            else
+            {
+                new_object.transform.position = this.transform.position;
+            }
             new_object.transform.rotation = this.transform.rotation;
         }
     }
