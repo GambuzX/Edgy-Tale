@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private bool edgyTransformation = false;
 
     public float movementSpeed = 0.05f, rotateSpeed = 100f;
+    public float edgeDistance = 1f;
     private Vector2 movementDirection;
     private float vertical, horizontal;
     private float rotate;
@@ -48,10 +49,10 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 newPos = this.transform.position + new Vector3(movementDirection.x, movementDirection.y, 0);
 
-        if (newPos.x > topRightCorner.x || newPos.x < bottomLeftCorner.x)
+        if (newPos.x > topRightCorner.x - edgeDistance || newPos.x < bottomLeftCorner.x + edgeDistance)
             newPos.x = transform.position.x;
 
-        if (newPos.y > topRightCorner.y || newPos.y < bottomLeftCorner.y)
+        if (newPos.y > topRightCorner.y - edgeDistance || newPos.y < bottomLeftCorner.y + edgeDistance)
             newPos.y = transform.position.y;
 
 

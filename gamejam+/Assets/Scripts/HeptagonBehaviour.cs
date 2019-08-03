@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PentagonBehaviour : Enemy
+public class HeptagonBehaviour : Enemy
 {
     public AudioClip soundEffectShot;
 
@@ -10,17 +10,20 @@ public class PentagonBehaviour : Enemy
 
     private GameObject bulletPrefab;
 
-    bool shotLock = true;
+    private List<Transform> childVertices = new List<Transform>();
 
-    private List<GameObject> enemyBullets;
+    bool shotLock = true;
 
     protected override void Start()
     {
+        foreach (Transform child in transform)
+        {
+            childVertices.Add(child);
+        }
         bulletPrefab = Resources.Load<GameObject>("EnemyBullet");
         soundSourceShot = GetComponent<AudioSource>();
         soundSourceShot.clip = soundEffectShot;
         Invoke("toggleShotLock", 1);
-        enemyBullets = new List<GameObject>();
         base.Start();
     }
 
@@ -28,6 +31,7 @@ public class PentagonBehaviour : Enemy
     {
         if (shotLock)
         {
+            this.transform.position = player.position + Vector3.one * 5 * Random.Range(-1f, 1f);
             toggleShotLock();
             spawnBullets();
             Invoke("toggleShotLock", 3);
@@ -37,10 +41,13 @@ public class PentagonBehaviour : Enemy
     void spawnBullets()
     {
         soundSource.Play();
-        Vector3 bulletDir = (player.position - transform.position).normalized;
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        enemyBullets.Add(bullet);
-        bullet.GetComponent<EnemyBullet>().setDirection(bulletDir);
+        foreach (Transform child in childVertices)
+        {
+            Vector3 bulletDir = (child.position - transform.position).normalized;
+            GameObject bullet = Instantiate(bulletPrefab, child.position, Quaternion.identity);
+            bullet.transform.parent = this.transform;
+            bullet.GetComponent<EnemyBullet>().setDirection(bulletDir);
+        }
     }
 
     private void toggleShotLock()

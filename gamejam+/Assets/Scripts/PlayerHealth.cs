@@ -54,8 +54,7 @@ public class PlayerHealth : MonoBehaviour
             GameObject.FindObjectOfType<Spawner>().CancelInvoke();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject gameObject in enemies)
-            {
-                Debug.Log(gameObject.name); 
+            { 
                 gameObject.GetComponent<Enemy>().enabled = false;
             }
 
@@ -66,17 +65,19 @@ public class PlayerHealth : MonoBehaviour
             {
                 transform.gameObject.SetActive(!transform.gameObject.activeSelf);
             }
-            //Destroy(this.gameObject);
+
+            foreach (Enemy enemy in GameObject.FindObjectsOfType<Enemy>())
+            {
+                enemy.destroySelf();
+            }
+
+            foreach (EnemyBullet enemyBullet in GameObject.FindObjectsOfType<EnemyBullet>())
+            {
+                enemyBullet.selfDestruct();
+            }
         }
         healthHandler.updateSlider();
         time_since_lost_health = Time.time;
         initialTime = Time.time;
-    }
-
-
-    IEnumerator DeathScreen()
-    {
-        Destroy(this.gameObject);
-        yield return null;
     }
 }

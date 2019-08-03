@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 2428636438818289542}
   - component: {fileID: 2428636438818289541}
   - component: {fileID: 2428636438818289540}
+  - component: {fileID: -8817058142526324359}
   m_Layer: 0
   m_Name: HeptagonEnemy
   m_TagString: Enemy
@@ -211,7 +212,7 @@ MonoBehaviour:
   soundEffect: {fileID: 8300000, guid: b05d8195d750e3b4c8d6db77285a8e55, type: 3}
   speed: 3
   kill_points: 0.2
-  damage: 25
+  damage: 20
   health: 5
 --- !u!60 &2428636438818289541
 PolygonCollider2D:
@@ -341,6 +342,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8817058142526324359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428636438818289544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0f80b2cdee23d4c9cbe740d54370cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 2f66b5750097b3c46b64aba3a798a3a5, type: 3}
+  speed: 1
+  kill_points: 0.1
+  damage: 10
+  health: 1
+  soundEffectShot: {fileID: 8300000, guid: 2f66b5750097b3c46b64aba3a798a3a5, type: 3}
 --- !u!1 &2428636439447913787
 GameObject:
   m_ObjectHideFlags: 0

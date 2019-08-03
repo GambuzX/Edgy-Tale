@@ -59,7 +59,7 @@ public class EnemyBullet : MonoBehaviour
         this.speed = speed;
     }
 
-    private void selfDestruct()
+    public void selfDestruct()
     {
         Destroy(this.gameObject);
     }
