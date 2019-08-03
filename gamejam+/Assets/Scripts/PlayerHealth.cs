@@ -51,10 +51,11 @@ public class PlayerHealth : MonoBehaviour
         health -= value;
         if(health <= .0f)
         {
+            GameObject.FindObjectOfType<Spawner>().CancelInvoke();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject gameObject in enemies)
             {
-                Debug.Log(gameObject.name);
+                Debug.Log(gameObject.name); 
                 gameObject.GetComponent<Enemy>().enabled = false;
             }
 
