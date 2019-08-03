@@ -14,6 +14,7 @@ public enum PowerUpType
 public class PowerUp : MonoBehaviour
 {
     public static float health;
+
     public static PowerUpType GetPowerUp()
     {
         int random = Random.Range(0, 5);
@@ -21,10 +22,31 @@ public class PowerUp : MonoBehaviour
         return (PowerUpType)random;
     }
 
+    public static string PowerUpName(PowerUpType powerUp)
+    {
+        switch (powerUp)
+        {
+            case PowerUpType.Health:
+                return "pill";
+            case PowerUpType.Super_Edginess:
+                return "blue_pill";
+            case PowerUpType.Bullet:
+                return "ammo";
+            case PowerUpType.Points:
+                return "dollar_sign";
+            case PowerUpType.Shield:
+                return "shield";
+            default:
+                return "pill";
+        }
+    }
+
     public PowerUpType type;
     private HealthHandler healthHandler;
     private EdginessHandler edginessHandler;
     private PolyShooter polyShooter;
+
+    private PowerUpManager powerUpManager;
 
     void Start()
     {
@@ -45,12 +67,14 @@ public class PowerUp : MonoBehaviour
                 Destroy(this);
                 break;
         }
+        powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
+
         Invoke("DestroySelf", 10f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Polygon"))
+        if (!powerUpManager.isPowerUpActive() && collision.gameObject.CompareTag("Polygon"))
         {
             switch (type)
             {
@@ -59,15 +83,19 @@ public class PowerUp : MonoBehaviour
                     break;
                 case PowerUpType.Super_Edginess:
                     edginessHandler.StartEdginessShield();
+                    powerUpManager.activatePowerUp(type);
                     break;
                 case PowerUpType.Bullet:
                     polyShooter.StartBiggerBullets();
+                    powerUpManager.activatePowerUp(type);
                     break;
                 case PowerUpType.Points:
                     edginessHandler.StartDuplicatePoints();
+                    powerUpManager.activatePowerUp(type);
                     break;
                 case PowerUpType.Shield:
                     healthHandler.StartShield();
+                    powerUpManager.activatePowerUp(type);
                     break;
                 default:
                     break;

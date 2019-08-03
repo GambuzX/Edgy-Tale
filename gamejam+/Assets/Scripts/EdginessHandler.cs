@@ -31,10 +31,9 @@ public class EdginessHandler : MonoBehaviour
 
     //Power Ups
     private bool canLooseEdginess;
-    private float startShieldTime;
-
     private bool duplicatePoints;
-    private float startDuplicatePoints;
+
+    private PowerUpManager powerUpManager;
 
     // Start is called before the first frame update
     void Start()
@@ -46,16 +45,15 @@ public class EdginessHandler : MonoBehaviour
         spriteHandler = GameObject.FindObjectOfType<SpriteHandler>();
         spawner = GameObject.FindObjectOfType<Spawner>();
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+        powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
 
         trueEndingRotate = false;
         endingReached = false;
 
         //Power Ups
         canLooseEdginess = true;
-        startShieldTime = Time.time;
 
         duplicatePoints = false;
-        startDuplicatePoints = Time.time;
 
         edginess = 3f;
         egg_counter = 0;
@@ -68,27 +66,30 @@ public class EdginessHandler : MonoBehaviour
         {
             playerMovement.rotatePlayer(1000f);
         }
-
-        if (!canLooseEdginess && Time.time - startShieldTime > 10.0f)
-        {
-            canLooseEdginess = true;
-        }
-        if(duplicatePoints && Time.time - startDuplicatePoints > 5.0f)
-        {
-            duplicatePoints = false;
-        }
     }
 
     public void StartEdginessShield()
     {
-        startShieldTime = Time.time;
         canLooseEdginess = false;
+        Invoke("DisableEdginessShield", 10f);
+    }
+
+    private void DisableEdginessShield()
+    {
+        canLooseEdginess = true;
+        powerUpManager.disablePowerUp();
     }
 
     public void StartDuplicatePoints()
     {
-        startDuplicatePoints = Time.time;
         duplicatePoints = true;
+        Invoke("DisableDuplicatePoints", 5f);
+    }
+
+    private void DisableDuplicatePoints()
+    {
+        duplicatePoints = false;
+        powerUpManager.disablePowerUp();
     }
 
     public void updateSlider()
