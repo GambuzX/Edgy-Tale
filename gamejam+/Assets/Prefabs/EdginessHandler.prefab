@@ -47,7 +47,7 @@ MonoBehaviour:
   shoot_edginess_cost: 0.005
   easter_egg_trigger: 10
   soundEffectGrow: {fileID: 8300000, guid: 7391d4bb37514854d954ea641f48ed46, type: 3}
-  soundEffectUngrow: {fileID: 8300000, guid: 6454e671fd1e7694d9f753450c197d33, type: 3}
+  soundEffectUngrow: {fileID: 8300000, guid: e44ff2190138d0143bfcbe6516791daa, type: 3}
 --- !u!82 &-5488839175276018173
 AudioSource:
   m_ObjectHideFlags: 0
