@@ -52,7 +52,7 @@ public class EdginessHandler : MonoBehaviour
 
         edginess += inc;
 
-        if ((int)edginess != previous)
+        if ((int)edginess != previous && previous > 3)
         {
             if((int)edginess < previous)
             {
@@ -63,7 +63,11 @@ public class EdginessHandler : MonoBehaviour
                 soundSource.clip = soundEffectGrow;
             }
             soundSource.Play();
-            
+
+            FindObjectOfType<PlayerMovement>().toggleEdgyTransformation();
+
+            FindObjectOfType<PlayerMovement>().Invoke("toggleEdgyTransformation", 0.5f);
+
             spriteHandler.changeSprite((int)edginess);
         }
 
