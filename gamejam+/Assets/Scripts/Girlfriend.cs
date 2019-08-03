@@ -25,8 +25,7 @@ public class Girlfriend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(player.position, transform.position);
-        if (distance <= stopDistance)
+        if (Vector3.Distance(player.position, transform.position) <= stopDistance)
         {
             if (trueEnding)
                 EndGame("GirlfriendMsgWin");

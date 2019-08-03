@@ -31,12 +31,6 @@ public class Spawner : MonoBehaviour
         Invoke("spawnEnemy", 2);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void spawnEnemy()
     {
         GameObject newEnemy = spriteHandler.GetNewEnemy(edginessHandler.getEdges());

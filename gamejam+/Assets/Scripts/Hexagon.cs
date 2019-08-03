@@ -18,7 +18,6 @@ public class Hexagon : Enemy
     // Update is called once per frame
     protected override void Update()
     {
-
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
         if (Random.Range(0, 10) > 8) rotationDir *= -1;
