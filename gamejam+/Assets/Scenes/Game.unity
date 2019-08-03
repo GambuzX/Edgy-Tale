@@ -2054,6 +2054,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967062995}
   m_CullTransparentMesh: 0
+--- !u!1 &1060005775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1060005776}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1060005776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060005775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093640568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,7 +2638,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "OMG!! You did it!\r\r\nI can''t believe you lost all your edges!!!\r\nWe
+  m_Text: "OMG!! You did it!\r\r\nI can't believe you lost all your edges!!!\r\nWe
     should date again."
 --- !u!222 &1348357635
 CanvasRenderer:
@@ -4449,6 +4479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 718986398, guid: 4ce6b68fe35cd2046a4e62096f54b538, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 2020056189}
     - target: {fileID: 3659381080556408078, guid: 4ce6b68fe35cd2046a4e62096f54b538,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4504,10 +4538,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 718986398, guid: 4ce6b68fe35cd2046a4e62096f54b538, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 2020056189}
     m_RemovedComponents:
     - {fileID: 6033460993937382339, guid: 4ce6b68fe35cd2046a4e62096f54b538, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4ce6b68fe35cd2046a4e62096f54b538, type: 3}

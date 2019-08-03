@@ -31,7 +31,6 @@ public class PowerUpSpawner : MonoBehaviour
 
     private void spawnPowerUp()
     {
-        Debug.Log("Spawn Power Up");
         PowerUpType newPowerUp = PowerUp.GetPowerUp();
         string powerUpName = "";
         switch (newPowerUp)
@@ -54,7 +53,6 @@ public class PowerUpSpawner : MonoBehaviour
             default:
                 break;
         }
-        Debug.Log(powerUpName);
         int index = Random.Range(0, nPos);
         GameObject gameObject = Instantiate(Resources.Load<GameObject>(powerUpName), spawnPositions[index].position, Quaternion.identity);
         
