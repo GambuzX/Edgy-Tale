@@ -5,24 +5,26 @@ using UnityEngine;
 public class Hexagon : Enemy
 {
 
-    public float rotateSpeed;
+    public float rotateSpeed = 100f;
+
+    private int rotationDir = 1;
+
+    protected override void Start()
+    {
+        base.Start();
+        rotationDir = 1;
+    }
 
     // Update is called once per frame
     protected override void Update()
     {
-        int move = Random.Range(0, 2);
-        int rotate = Random.Range(0, 2);
 
-        if (move != 0)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        }
+        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
-        if (rotate != 0)
-        {
-            transform.RotateAround(player.position, Vector3.up, rotateSpeed * Time.deltaTime);
-        }
-
+        if (Random.Range(0, 10) > 8) rotationDir *= -1;
+        float theta = rotateSpeed * Time.deltaTime * rotationDir;
+        transform.RotateAround(player.position, Vector3.forward, theta);
+        transform.RotateAround(transform.position, Vector3.forward, -theta);
 
         if (wasHit)
         {
