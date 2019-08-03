@@ -10,15 +10,19 @@ public class Enemy : MonoBehaviour
     private AudioSource soundSource;
 
     public float speed = 1f;
+    public float kill_points = 0.1f;
 
     private Transform player;
+
+    private EdginessHandler edginessHandler;
 
     // Start is called before the first frame update
     void Start()
     {
         soundSource = GetComponent<AudioSource>();
-        soundSource.clip = soundEffect;
-        player = GameObject.FindObjectOfType<PlayerMovement>().transform;   
+        soundSource.clip = soundEffect; 
+        player = GameObject.FindObjectOfType<PlayerMovement>().transform;
+        edginessHandler = GameObject.FindObjectOfType<EdginessHandler>();
     }
 
     // Update is called once per frame
@@ -34,6 +38,7 @@ public class Enemy : MonoBehaviour
             soundSource.Play();
             this.enabled = false;
             this.GetComponent<SpriteRenderer>().enabled = false;
+            edginessHandler.addEdginess(kill_points);
             Invoke("destroySelf", 1);
         }
     }

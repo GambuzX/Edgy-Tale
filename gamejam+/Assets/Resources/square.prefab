@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffect: {fileID: 8300000, guid: 2f66b5750097b3c46b64aba3a798a3a5, type: 3}
-  shootDelay: 1
+  shootDelay: 0.5
 --- !u!82 &1280322889965679131
 AudioSource:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class PolyShooter : MonoBehaviour
 
     private bool shootLock;
 
+    private EdginessHandler edginessHandler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +28,14 @@ public class PolyShooter : MonoBehaviour
             childVertices.Add(child);
         }
         bulletPrefab = Resources.Load<GameObject>("Bullet");
+        edginessHandler = GameObject.FindObjectOfType<EdginessHandler>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (!shootLock && Input.GetButtonDown("Fire1"))
+        if (!shootLock && Input.GetButton("Fire1"))
         {
             shootLock = true;
             spawnBullets();
@@ -49,6 +52,7 @@ public class PolyShooter : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, child.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().setDirection(bulletDir);
         }
+        edginessHandler.handleShoot();
     }
 
     void unlockShoot()
