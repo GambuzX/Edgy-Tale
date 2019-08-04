@@ -49,11 +49,13 @@ public class PowerUp : MonoBehaviour
     private HealthHandler healthHandler;
     private EdginessHandler edginessHandler;
     private PolyShooter polyShooter;
+    private SpriteRenderer spriteRenderer;
 
     private PowerUpManager powerUpManager;
 
     void Start()
     {
+        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
         soundSource = GetComponent<AudioSource>();
         soundSource.clip = soundEffect;
         switch (type)
@@ -75,6 +77,7 @@ public class PowerUp : MonoBehaviour
         }
         powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
 
+        StartCoroutine(FadePowerUp());
         Invoke("DestroySelf", 10f);
     }
 
@@ -117,4 +120,20 @@ public class PowerUp : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    IEnumerator FadePowerUp()
+    {
+        // loop over 1 second backwards
+        for (float i = 1; i >= 0; i -= Time.deltaTime/10f)
+        {
+            Debug.Log(i);
+            // set color with i as alpha
+            Color tmp = spriteRenderer.color;
+            tmp.a = i;
+            spriteRenderer.color = tmp;
+
+            yield return null;
+        }
+    }
+
 }
