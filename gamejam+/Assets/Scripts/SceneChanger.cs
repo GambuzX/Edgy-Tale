@@ -14,7 +14,7 @@ public class SceneChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Skip"))
+        if (Input.anyKeyDown)
         {
             SceneManager.LoadScene("Menu");
         }
