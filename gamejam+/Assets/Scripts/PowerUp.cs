@@ -126,7 +126,6 @@ public class PowerUp : MonoBehaviour
         // loop over 1 second backwards
         for (float i = 1; i >= 0; i -= Time.deltaTime/10f)
         {
-            Debug.Log(i);
             // set color with i as alpha
             Color tmp = spriteRenderer.color;
             tmp.a = i;
