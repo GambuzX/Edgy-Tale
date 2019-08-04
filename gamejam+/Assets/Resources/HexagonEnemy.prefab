@@ -260,7 +260,7 @@ MonoBehaviour:
   speed: 7
   kill_points: 0.1
   damage: 10
-  health: 1
+  health: 3
   rotateSpeed: 100
 --- !u!1 &8408266092312776019
 GameObject:
