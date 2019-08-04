@@ -9,6 +9,7 @@ public class PolyShooter : MonoBehaviour
     private AudioSource soundSource;
 
     public float shootDelay = 0.4f;
+    public float chargeDelay = 1f;
 
     private List<Transform> childVertices = new List<Transform>();
     private GameObject bulletPrefab;
@@ -21,6 +22,8 @@ public class PolyShooter : MonoBehaviour
     private bool biggerBullets;
 
     private PowerUpManager powerUpManager;
+
+    private float attackStartTime;
 
     // Start is called before the first frame update
     void Start()
@@ -41,11 +44,24 @@ public class PolyShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!shootLock && Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
-            shootLock = true;
-            spawnBullets();
-            Invoke("unlockShoot", shootDelay);
+            attackStartTime = Time.fixedTime;
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            if (Time.fixedTime - attackStartTime > chargeDelay)
+            {
+                chargeShot();
+            }
+            else if (!shootLock)
+            {
+                shootLock = true;
+                spawnBullets();
+                Invoke("unlockShoot", shootDelay);
+            }
+
         }
     }
 
@@ -63,6 +79,27 @@ public class PolyShooter : MonoBehaviour
             bullet.GetComponent<Bullet>().setDirection(bulletDir);
         }
         edginessHandler.handleShoot();
+    }
+
+    void chargeShot()
+    {
+        soundSource.Play();
+        foreach (Transform child in childVertices)
+        {
+            Vector3 bulletDir = (child.position - transform.position).normalized;
+            GameObject bullet = Instantiate(bulletPrefab, child.position, Quaternion.identity);
+
+            Bullet bulletComp = bullet.GetComponent<Bullet>();
+            bulletComp.setDirection(bulletDir);
+            bulletComp.setPiercing(true);
+
+            bullet.transform.localScale *= 3;
+            if (biggerBullets)
+            {
+                bullet.transform.localScale *= 2;
+            }
+        }
+        edginessHandler.handleShoot(2);
     }
 
     void unlockShoot()
