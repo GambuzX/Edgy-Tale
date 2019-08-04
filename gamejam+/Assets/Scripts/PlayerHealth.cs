@@ -53,6 +53,12 @@ public class PlayerHealth : MonoBehaviour
                 enemyBullet.selfDestruct();
             }
 
+            GameObject.FindObjectOfType<PowerUpSpawner>().CancelInvoke();
+            foreach (PowerUp powerUp in GameObject.FindObjectsOfType<PowerUp>())
+            {
+                Destroy(powerUp.gameObject);
+            }
+
             foreach (Transform transform in canvas.transform)
             {
                 if (transform.name == "GameOverScreen")
