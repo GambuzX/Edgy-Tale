@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             this.rotatePlayer(10 * rotateSpeed);
         }
 
-        movementDirection = new Vector2(horizontal, vertical) * movementSpeed;
+        movementDirection = new Vector2(horizontal, vertical) * movementSpeed * Time.deltaTime * 60;
 
         Vector3 newPos = this.transform.position + new Vector3(movementDirection.x, movementDirection.y, 0);
 
