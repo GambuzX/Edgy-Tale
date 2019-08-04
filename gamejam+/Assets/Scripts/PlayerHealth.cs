@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
         health -= value;
         if(health <= .0f)
         {
-            GameObject.FindObjectOfType<Spawner>().CancelInvoke();
+            GameObject.FindObjectOfType<Spawner>().stopSpawning();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject gameObject in enemies)
             {
