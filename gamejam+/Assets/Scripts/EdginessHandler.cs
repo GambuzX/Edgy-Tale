@@ -185,7 +185,7 @@ public class EdginessHandler : MonoBehaviour
             Destroy(powerUp.gameObject);
         }
 
-        GameObject.FindObjectOfType<PowerUpSpawner>().CancelInvoke();
+        GameObject.FindObjectOfType<PowerUpSpawner>().stopSpawning();
 
         shoot_cost_lock = true;
         spawner.stopSpawning();
