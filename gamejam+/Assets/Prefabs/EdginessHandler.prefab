@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot_edginess_cost: 0.005
-  easter_egg_trigger: 10
+  easter_egg_trigger: 20
   max_edges: 8
   soundEffectGrow: {fileID: 8300000, guid: 7391d4bb37514854d954ea641f48ed46, type: 3}
   soundEffectUngrow: {fileID: 8300000, guid: 5c53d11a32c9a9e43acd96c58f767710, type: 3}

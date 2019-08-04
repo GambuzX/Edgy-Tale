@@ -355,10 +355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d61d49480f5d8245b99e434f5c8dac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
   decrementSpawnRateTime: 20
   spawnRate: 5
   minimumSpawnRate: 1
+  spawndistance: 10
 --- !u!1 &7338894279294577705
 GameObject:
   m_ObjectHideFlags: 0
