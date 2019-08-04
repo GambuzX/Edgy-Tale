@@ -10,6 +10,7 @@ TagManager:
   - Minimap
   - Music
   - PickUp
+  - Vertex
   layers:
   - Default
   - TransparentFX

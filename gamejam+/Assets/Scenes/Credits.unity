@@ -275,7 +275,6 @@ MonoBehaviour:
 
 
 
-
     GAME DEVELOPED BY
 
 '
@@ -558,9 +557,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Eyes: https://pixabay.com/vectors/smiley-eyes-happy-face-crazy-39984/\r\n\r\nAngry
-    face: https://www.maxpixel.net/Evil-Smiley-Anger-Criminal-Face-Emoji-Emoticon-3322465\r\n\r\nEdgy
-    face: https://storage.needpix.com/rsynced_images/cartoon-2028601_1280.png\r\n\r\nGirl
-    face: https://cdn.pixabay.com/photo/2018/04/27/16/38/female-3355169_960_720.png\r\n\r\nMexican:
+    Face: https://www.maxpixel.net/Evil-Smiley-Anger-Criminal-Face-Emoji-Emoticon-3322465\r\n\r\nEdgy
+    Face: https://storage.needpix.com/rsynced_images/cartoon-2028601_1280.png\r\n\r\nGirl
+    Face: https://cdn.pixabay.com/photo/2018/04/27/16/38/female-3355169_960_720.png\r\n\r\nMexican:
     https://cdn.pixabay.com/photo/2017/01/12/18/00/sombrero-1975267_960_720.png\r\n\r\nMonocle:
     https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lipharoj_kaj_monoklo.svg/1024px-Lipharoj_kaj_monoklo.svg.png\r\n\r\n\rSquare:
     https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/LACMTA_Square_Orange_Line.svg/1024px-LACMTA_Square_Orange_Line.svg.png\r\n\r\nTriangle:
@@ -571,20 +570,20 @@ MonoBehaviour:
     https://cdn.pixabay.com/photo/2017/07/21/13/42/octagon-2525760_960_720.png\r\n\r\nCircle:
     https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/1024px-Circle_-_black_simple.svg.png\r\n\r\nDecagon:
     https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Regular_decagon.svg/1024px-Regular_decagon.svg.png\r\n\r\r\nBaseball
-    hat: https://cdn.pixabay.com/photo/2014/04/02/10/38/cap-304059_960_720.png\r\n\r\nPink
-    fedora: https://upload.wikimedia.org/wikipedia/commons/b/b4/Pink_Fedora_hat.png\r\n\r\nTop
+    Hat: https://cdn.pixabay.com/photo/2014/04/02/10/38/cap-304059_960_720.png\r\n\r\nPink
+    Fedora: https://upload.wikimedia.org/wikipedia/commons/b/b4/Pink_Fedora_hat.png\r\n\r\nTop
     Hat: http://res.publicdomainfiles.com/pdf_view/74/13932462011169.png\r\n\r\nWinter
     Hat: https://cdn.pixabay.com/photo/2014/04/02/16/22/cap-307049_960_720.png\r\n\r\nFez:
     https://cdn.pixabay.com/photo/2017/12/18/11/51/isolated-3025971_960_720.png\r\n\r\nChef
     Hat: http://res.publicdomainfiles.com/pdf_view/74/13932425414082.png\r\n\r\nGirl
-    hat: https://cdn.pixabay.com/photo/2012/04/16/13/01/hat-35910_960_720.png\r\n\r\r\nDialog
-    box: https://storage.needpix.com/rsynced_images/speech-34419_1280.png\r\n\nThought
-    bubble: https://cdn.pixabay.com/photo/2014/04/02/10/57/thought-bubble-305053_960_720.png\r\n\r\nBullet:
-    https://www.needpix.com/photo/100281/bullet-gun-rifle-war\r\n\r\nRed Pill: http://www.publicdomainfiles.com/show_file.php?id=13540092618305\r\n\r\nBlue
+    Hat: https://cdn.pixabay.com/photo/2012/04/16/13/01/hat-35910_960_720.png\r\n\r\r\nDialog
+    Box: https://storage.needpix.com/rsynced_images/speech-34419_1280.png\r\n\nThought
+    Bubble: https://cdn.pixabay.com/photo/2014/04/02/10/57/thought-bubble-305053_960_720.png\r\n\r\nBullet:
+    \nhttps://www.needpix.com/photo/100281/bullet-gun-rifle-war\r\n\r\nRed Pill: http://www.publicdomainfiles.com/show_file.php?id=13540092618305\r\n\r\nBlue
     Pill: https://pixabay.com/vectors/pill-medicine-capsule-blue-drug-311364/\r\n\r\nShield:
     https://pt.wikipedia.org/wiki/Ficheiro:Shield_by_Franc_from_the_Noun_Project.svg\r\n\r\nDollar
     Sign: https://commons.wikimedia.org/wiki/File:Dollar_sign_in_circle.svg\n\nKeyboard:\nhttps://pixabay.com/vectors/keyboard-the-keys-on-the-keyboard-2170063/\r\n\nDualshock
-    4:\r\nhttps://pixabay.com/illustrations/kontroller-gaming-ps4-playstation-2022084/\r\n\nMouse:\r\nhttps://pixabay.com/vectors/icons-matt-mice-mouse-symbol-1294515/\n\n\n\nBRUNO
+    4:\r\nhttps://pixabay.com/illustrations/kontroller-gaming-ps4-playstation-2022084/\r\n\nMouse:\r\nhttps://pixabay.com/vectors/icons-matt-mice-mouse-symbol-1294515/\n\n\n\n\nBRUNO
     FILIPE CARDOSO MICAELO\n\nM\xC1RIO GIL MARINHO MESQUITA\n\nPEDRO MIGUEL RODRIGUES
     FERRAZ ESTEVES"
 --- !u!222 &1872000086
