@@ -20,6 +20,7 @@ public class PowerUpManager : MonoBehaviour
     {
         string name = PowerUp.PowerUpName(powerUp);
         powerUpImage.sprite = Resources.Load<GameObject>(name).GetComponent<SpriteRenderer>().sprite;
+        powerUpImage.color = new Color(255f, 255f, 255f, 255f);
 
         activePowerUp = true;
     }
@@ -28,6 +29,7 @@ public class PowerUpManager : MonoBehaviour
     {
         activePowerUp = false;
         powerUpImage.sprite = null;
+        powerUpImage.color = new Color(108f, 108f, 108f, 168f);
     }
 
     public bool isPowerUpActive()
