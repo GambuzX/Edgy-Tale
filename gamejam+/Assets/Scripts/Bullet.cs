@@ -11,8 +11,9 @@ public class Bullet : MonoBehaviour
     private Vector3 direction = Vector3.zero;
 
     public AudioClip soundEffect;
-
     private AudioSource soundSource;
+
+    private bool piercing = false;
 
     void Start()
     {
@@ -57,6 +58,11 @@ public class Bullet : MonoBehaviour
         this.speed = speed;
     }
 
+    public void setPiercing(bool piercing)
+    {
+        this.piercing = piercing;
+    }
+
     private void selfDestruct()
     {
         Destroy(this.gameObject);
@@ -67,10 +73,13 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             soundSource.Play();
-            this.GetComponent<CircleCollider2D>().enabled = false;
-            this.GetComponent<SpriteRenderer>().enabled = false;
-            this.GetComponent<TrailRenderer>().enabled = false;
-            Invoke("selfDestruct", 1);
+            if (!piercing)
+            {
+                this.GetComponent<CircleCollider2D>().enabled = false;
+                this.GetComponent<SpriteRenderer>().enabled = false;
+                this.GetComponent<TrailRenderer>().enabled = false;
+                Invoke("selfDestruct", 1);
+            }
         }
     }
 }

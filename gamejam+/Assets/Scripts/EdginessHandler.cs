@@ -144,7 +144,7 @@ public class EdginessHandler : MonoBehaviour
         }
     }
 
-    public void handleShoot()
+    public void handleShoot(int multiplier = 1)
     {
         if (!endingReached && edginess-3f < 10e-6)
         {
@@ -157,7 +157,7 @@ public class EdginessHandler : MonoBehaviour
         }
         else
         {
-            addEdginess(-shoot_edginess_cost * (int) edginess);
+            addEdginess(-shoot_edginess_cost * (int) edginess * multiplier);
         }
     }
 
