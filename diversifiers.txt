@@ -3,9 +3,6 @@ Game Design
 - Algo de errado não está certo: Desafie convenções de jogos e inclua desafios
 contra-intuitivos.
 
-- Em aberto: o jogo deve conter múltiplas soluções para os problemas apresentados,
-ao invés de apenas uma solução correta.
-
 - Anticânone: a única forma de terminar o jogo deve ser se o jogador quebrar as
 próprias regras estabelecidas pelo jogo.
 
