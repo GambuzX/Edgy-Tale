@@ -339,7 +339,7 @@ MonoBehaviour:
   speed: 1
   kill_points: 0.2
   damage: 15
-  health: 5
+  health: 2
   soundEffectShot: {fileID: 8300000, guid: 2f66b5750097b3c46b64aba3a798a3a5, type: 3}
 --- !u!1 &4978176412845459490
 GameObject:

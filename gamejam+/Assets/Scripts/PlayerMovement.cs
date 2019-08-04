@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private bool edgyTransformation = false;
 
-    public float movementSpeed = 0.05f, rotateSpeed = 100f;
+    public float movementSpeed = 0.02f, rotateSpeed = 100f;
     public float edgeDistance = 1f;
     private Vector2 movementDirection;
     private float vertical, horizontal;
