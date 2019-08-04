@@ -62,6 +62,11 @@ public class EdginessHandler : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButtonDown("Submit"))
+        {
+            addEdginess(1f);
+        }
+
         if (trueEndingRotate)
         {
             playerMovement.rotatePlayer(1000f);
