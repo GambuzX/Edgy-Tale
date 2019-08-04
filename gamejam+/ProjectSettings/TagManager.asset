@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Minimap
   - Music
+  - PickUp
   layers:
   - Default
   - TransparentFX

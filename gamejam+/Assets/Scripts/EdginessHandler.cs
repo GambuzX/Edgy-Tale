@@ -179,6 +179,14 @@ public class EdginessHandler : MonoBehaviour
 
     private void StopGame()
     {
+        PowerUp[] powerUps = GameObject.FindObjectsOfType<PowerUp>();
+        foreach (PowerUp powerUp in powerUps)
+        {
+            Destroy(powerUp.gameObject);
+        }
+
+        GameObject.FindObjectOfType<PowerUpSpawner>().CancelInvoke();
+
         shoot_cost_lock = true;
         spawner.stopSpawning();
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
