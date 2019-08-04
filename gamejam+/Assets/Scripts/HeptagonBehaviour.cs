@@ -12,29 +12,31 @@ public class HeptagonBehaviour : Enemy
 
     private List<Transform> childVertices = new List<Transform>();
 
-    bool shotLock = true;
+    bool shotEnabled = false;
 
     protected override void Start()
     {
         foreach (Transform child in transform)
         {
-            childVertices.Add(child);
+            if (child.CompareTag("Vertex"))
+                childVertices.Add(child);
         }
         bulletPrefab = Resources.Load<GameObject>("EnemyBullet");
         soundSourceShot = GetComponent<AudioSource>();
         soundSourceShot.clip = soundEffectShot;
-        Invoke("toggleShotLock", 1);
+        Invoke("enableShot", 1);
         base.Start();
     }
 
     protected override void Update()
     {
-        if (shotLock)
+        if (shotEnabled)
         {
-            this.transform.position = player.position + Vector3.one * 5 * Random.Range(-1f, 1f);
-            toggleShotLock();
+            Vector3 playerDir = player.position - transform.position;
+            transform.position += playerDir * 1.75f;
+            shotEnabled = false;
             spawnBullets();
-            Invoke("toggleShotLock", 3);
+            Invoke("enableShot", 3);
         }
         base.Update();
     }
@@ -45,13 +47,13 @@ public class HeptagonBehaviour : Enemy
         {
             Vector3 bulletDir = (child.position - transform.position).normalized;
             GameObject bullet = Instantiate(bulletPrefab, child.position, Quaternion.identity);
-            bullet.transform.parent = this.transform;
+            bullet.transform.localScale *= 2;
             bullet.GetComponent<EnemyBullet>().setDirection(bulletDir);
         }
     }
 
-    private void toggleShotLock()
+    private void enableShot()
     {
-        shotLock = !shotLock;
+        shotEnabled = true;
     }
 }
