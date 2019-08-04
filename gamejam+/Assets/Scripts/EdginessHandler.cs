@@ -219,8 +219,8 @@ public class EdginessHandler : MonoBehaviour
         spriteHandler.playerTrueEndingFace();
 
         bar.value = 1;
-        currentLevel.text = "0";
-        nextLevel.text = "0";
+        currentLevel.text = "1";
+        nextLevel.text = "1";
 
         spawner.unleashGirlfriend(true);
     }
