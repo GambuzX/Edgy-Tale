@@ -276,10 +276,9 @@ MonoBehaviour:
 
 
 
+    GAME DEVELOPED BY
 
-
-
-    GAME DEVELOPED BY'
+'
 --- !u!222 &301263359
 CanvasRenderer:
   m_ObjectHideFlags: 0
