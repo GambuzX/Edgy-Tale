@@ -8,6 +8,7 @@ TagManager:
   - Polygon
   - Enemy
   - Minimap
+  - Music
   layers:
   - Default
   - TransparentFX
