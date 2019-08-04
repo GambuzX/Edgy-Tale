@@ -1,0 +1,34 @@
+Game Design
+----------------------
+- Algo de errado não está certo: Desafie convenções de jogos e inclua desafios
+contra-intuitivos.
+
+- Anticânone: a única forma de terminar o jogo deve ser se o jogador quebrar as
+próprias regras estabelecidas pelo jogo.
+
+- Variações sobre um tema: o jogo deve reutilizar um elemento, como um cenário,
+mecânica, ou personagem, durante toda sua duração.
+
+
+Arte
+----------------------
+- Estátua: o jogo deve ter animação reduzida ou inexistente, utilizando apenas efeitos
+visuais.
+
+
+Narrativa
+----------------------
+- É verídico, eu era o jogo: sua narrativa deve tentar convencer o jogador de uma
+mentira.
+
+- Labirinto de Palavras: a narrativa do jogo pode ser alterada pelas próprias
+mecânicas do jogo.
+
+Sound design
+----------------------	
+- Blips e Blops: os efeitos sonoros podem usar apenas sons feitos no SFXR
+
+
+Extras
+----------------------	
+- É de todo mundo: use apenas recursos gratuitos para fazer seu jogo.
