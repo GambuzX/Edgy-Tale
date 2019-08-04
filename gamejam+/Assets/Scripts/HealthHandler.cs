@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class HealthHandler : MonoBehaviour
 {
+    public AudioClip soundEffect;
+
+    private AudioSource soundSource;
+
     public float health_cost = 0.01f;
 
     private Slider bar;
@@ -18,6 +22,8 @@ public class HealthHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundSource = GetComponent<AudioSource>();
+        soundSource.clip = soundEffect;
         shieldEnabled = false;
         bar = GameObject.Find("HealthBar").GetComponent<Slider>();
         updateSlider();
@@ -37,6 +43,7 @@ public class HealthHandler : MonoBehaviour
         if(value < 0)
         {
             player_health.DecreaseHealth(-value);
+            soundSource.Play();
         }
         else if(value > 0)
         {
