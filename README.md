@@ -3,7 +3,7 @@ Tale of a heartbroken triangle in a quest to lose his edginess.
 
 ### Context
 
-Game created during the Game Jam +, where we had 48h to both develop it and prepare it's pitch.
+Game created during the Game Jam +, where we had 48h to both develop and prepare it's pitch.
 
 ### Description 
 
@@ -14,6 +14,11 @@ However, instead of lying down sad with what just happened, he decides to embark
 Defeat other polygons and absorb their edginess in order to raise your edges to infinite and get closer to a circle.
 
 **You must help him get his girlfriend back!**
+
+### Screenshots
+![Menu](https://github.com/GambuzX/Edgy-Tale/blob/master/screenshots/menu.PNG) *Menu*
+![Intro](https://github.com/GambuzX/Edgy-Tale/blob/master/screenshots/intro1.PNG) *Intro*
+![Game](https://github.com/GambuzX/Edgy-Tale/blob/master/screenshots/game1.PNG) *Game*
 
 ### Team 
 
@@ -47,8 +52,12 @@ Defeat other polygons and absorb their edginess in order to raise your edges to 
 * C#
 * SFXR
 
+### Rate our game in
+* https://gambuzx.itch.io/edgy-tale
+* https://gamejolt.com/games/edgy-tale/430649
+
 <hr>
 
-All the imported Assets are mentioned in the game's Credits.
+All the imported Assets are refered in the game's Credits.
 
 What is not there is of our authority.
