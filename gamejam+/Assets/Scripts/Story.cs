@@ -18,9 +18,16 @@ public class Story : MonoBehaviour
 
     private int num_image;
 
+    //Input
+    private string skip_button_name;
+
     // Start is called before the first frame update
     void Start()
     {
+        skip_button_name = "Skip";
+#if UNITY_WEBGL
+        skip_button_name += "_WEBGL";
+#endif
         canSkip = false;
         num_image = 1;
         Invoke("Fade_Anim", 5f);
@@ -35,7 +42,7 @@ public class Story : MonoBehaviour
 
     private void Update()
     {
-        if (canSkip && Input.GetButtonDown("Skip"))
+        if (canSkip && Input.GetButtonDown(skip_button_name))
         {
             SceneManager.LoadScene("Game");
         }
