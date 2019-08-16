@@ -25,6 +25,9 @@ public class PolyShooter : MonoBehaviour
 
     private float attackStartTime;
 
+    //Input
+    private string fire_button_name;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,17 +42,21 @@ public class PolyShooter : MonoBehaviour
         bulletPrefab = Resources.Load<GameObject>("Bullet");
         edginessHandler = GameObject.FindObjectOfType<EdginessHandler>();
         powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
+        fire_button_name = "Fire";
+#if UNITY_WEBGL
+        fire_button_name += "_WEBGL";
+#endif
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(fire_button_name))
         {
             attackStartTime = Time.fixedTime;
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp(fire_button_name))
         {
             if (Time.fixedTime - attackStartTime > chargeDelay)
             {
