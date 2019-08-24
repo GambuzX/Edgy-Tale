@@ -49,4 +49,9 @@ public class PowerUpSpawner : MonoBehaviour
     {
         CancelInvoke();
     }
+
+    public void restartSpawning()
+    {
+        Invoke("spawnPowerUp", spawnRate);
+    }
 }

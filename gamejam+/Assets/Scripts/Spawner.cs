@@ -56,6 +56,11 @@ public class Spawner : MonoBehaviour
         CancelInvoke();
     }
 
+    public void restartSpawning()
+    {
+        Invoke("spawnEnemy", spawnRate);
+    }
+
     public void unleashGirlfriend(bool trueEnding)
     {
         int index = Random.Range(0, nPos);
