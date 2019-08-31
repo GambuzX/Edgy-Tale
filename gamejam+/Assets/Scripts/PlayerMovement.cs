@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementDirection;
     private float vertical, horizontal;
     private float rotate;
+    private float mouseScrollDelta;
 
     private Vector3 topRightCorner, bottomLeftCorner;
 
@@ -34,10 +35,15 @@ public class PlayerMovement : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
         
         rotate = Input.GetAxis("Rotate");
+        mouseScrollDelta = Input.mouseScrollDelta.y;
 
         if(rotate != 0)
         {
             this.rotatePlayer(rotate * rotateSpeed);
+        }
+        if(mouseScrollDelta != 0)
+        {
+            this.rotatePlayer(mouseScrollDelta * rotateSpeed * 2.0f);
         }
 
         if (edgyTransformation)

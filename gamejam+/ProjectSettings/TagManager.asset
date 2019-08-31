@@ -11,6 +11,8 @@ TagManager:
   - Music
   - PickUp
   - Vertex
+  - GameOverScreen
+  - PauseScreen
   layers:
   - Default
   - TransparentFX
