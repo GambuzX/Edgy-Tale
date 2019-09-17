@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 1f, rotateSpeed = 5f;
+    public float speed, rotateSpeed = 5f;
 
     private bool dissipating = false;
 

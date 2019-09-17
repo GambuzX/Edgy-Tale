@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135051a772d3d784da78d687424ecb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   rotateSpeed: 500
   soundEffect: {fileID: 8300000, guid: 4a4ce5be3ffecd24389b924c0c567805, type: 3}
 --- !u!50 &4502766861463497452

@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public static bool first_enemy = true;
 
     public AudioClip soundEffect;
 
@@ -21,8 +24,12 @@ public class Enemy : MonoBehaviour
     protected EdginessHandler edginessHandler;
     protected HealthHandler healthHandler;
 
+    //Endless Mode
+    private EndlessModePoints points;
+    private string sceneName;
+
     // Start is called before the first frame update
-   protected virtual void Start()
+    protected virtual void Start()
     {
         soundSource = GetComponent<AudioSource>();
         soundSource.clip = soundEffect; 
@@ -68,6 +75,14 @@ public class Enemy : MonoBehaviour
 
     public void destroySelf()
     {
+        if ((sceneName = SceneManager.GetActiveScene().name) == "Endless Mode")
+        {
+            if (first_enemy) {
+                EndlessModePoints.text = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+                first_enemy = false;
+            }
+            EndlessModePoints.UpdateScore((uint)(kill_points*50));
+        }
         Destroy(this.gameObject);
     }
 }

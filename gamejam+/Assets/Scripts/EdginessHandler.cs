@@ -57,6 +57,7 @@ public class EdginessHandler : MonoBehaviour
 
         edginess = 3f;
         egg_counter = 0;
+        
         updateSlider();
     }
 

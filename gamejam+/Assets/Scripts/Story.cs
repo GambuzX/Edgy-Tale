@@ -44,7 +44,7 @@ public class Story : MonoBehaviour
     {
         if (canSkip && Input.GetButtonDown(skip_button_name))
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Story Mode");
         }
 
         if (Input.anyKey && !canSkip)
