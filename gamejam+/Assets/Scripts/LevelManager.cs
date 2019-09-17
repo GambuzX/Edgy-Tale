@@ -8,10 +8,11 @@ public class LevelManager : MonoBehaviour
     private GameObject pauseScreen;
     private PlayerMovement playerMovement;
     private PolyShooter[] polyShooters;
-    private string sceneName;
+    private bool hasPauseScreen;
 
     public void LoadScene(string name)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(name);
     }
 
@@ -22,19 +23,20 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == "Game")
+        hasPauseScreen = false;
+        if (GameObject.FindGameObjectWithTag("PauseScreen"))
         {
             pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen");
             pauseScreen.SetActive(false);
             playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
             polyShooters = GameObject.FindObjectsOfType<PolyShooter>();
+            hasPauseScreen = true;
         }
     }
 
     private void Update()
     {
-        if (sceneName == "Game" && Input.GetKeyDown(KeyCode.Escape))
+        if (hasPauseScreen && Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
         }
