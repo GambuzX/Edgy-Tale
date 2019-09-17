@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class GameOverButtons : MonoBehaviour
 {
-
     private Button[] buttons = new Button[2];
-
     private int selected;
-
     private bool buttonlock;
+
+    public Text scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +21,8 @@ public class GameOverButtons : MonoBehaviour
         }
         selected = 0;
         buttonlock = false;
+
+        scoreText.text += GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text;
 
         buttons[selected].Select();
     }

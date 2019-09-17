@@ -5,15 +5,10 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public float speed = 1f, rotateSpeed = 5f;
-
     public float damage = 1f;
-
     private bool dissipating = false;
-
     private Vector3 direction = Vector3.zero;
-
     public AudioClip soundEffect;
-
     private AudioSource soundSource;
 
     void Start()
