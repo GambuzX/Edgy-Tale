@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EdginessHandler : MonoBehaviour
 {
@@ -139,9 +140,18 @@ public class EdginessHandler : MonoBehaviour
         updateSlider();
         egg_counter = 0;
 
-        if ((int) edginess > max_edges )
+        if ((int) edginess > max_edges)
         {
-            triggerGameOver();
+            if (SceneManager.GetActiveScene().name == "Story Mode")
+            {
+                triggerGameOver();
+            }
+            /*else if(inc > 0)
+            {
+                bar.value = bar.maxValue;
+                currentLevel.text = ((int)max_edges).ToString();
+                nextLevel.text = ((int)max_edges + 1).ToString();
+            }*/
         }
     }
 
@@ -151,7 +161,7 @@ public class EdginessHandler : MonoBehaviour
         {
             egg_counter += 1;
 
-            if (egg_counter >= easter_egg_trigger)
+            if (egg_counter >= easter_egg_trigger && SceneManager.GetActiveScene().name == "Story Mode")
             {
                 TrueEnding();
             }
