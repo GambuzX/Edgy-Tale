@@ -11,9 +11,6 @@ public class EdginessHandler : MonoBehaviour
 
     public int max_edges = 8;
 
-    private Slider bar;
-    private Text currentLevel, nextLevel;
-
     private SpriteHandler spriteHandler;
 
     private float edginess;
@@ -36,17 +33,17 @@ public class EdginessHandler : MonoBehaviour
 
     private PowerUpManager powerUpManager;
 
+    private EdginessGrowth edgeGrowth;
+
     // Start is called before the first frame update
     void Start()
     {
         soundSource = this.GetComponent<AudioSource>();
-        bar = GameObject.Find("EdginessBar").GetComponent<Slider>();
-        currentLevel = GameObject.Find("CurrentEdges").GetComponent<Text>();
-        nextLevel = GameObject.Find("NextEdges").GetComponent<Text>();
         spriteHandler = GameObject.FindObjectOfType<SpriteHandler>();
         spawner = GameObject.FindObjectOfType<Spawner>();
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
+        edgeGrowth = GameObject.FindObjectOfType<EdginessGrowth>();
 
         trueEndingRotate = false;
         endingReached = false;
@@ -58,8 +55,8 @@ public class EdginessHandler : MonoBehaviour
 
         edginess = 3f;
         egg_counter = 0;
-        
-        updateEdginessDisplay();
+
+        updateEdginessGrowth();
     }
 
     private void Update()
@@ -92,13 +89,6 @@ public class EdginessHandler : MonoBehaviour
     {
         duplicatePoints = false;
         powerUpManager.disablePowerUp();
-    }
-
-    public void updateEdginessDisplay()
-    {
-        bar.value = edginess - (int) edginess;
-        currentLevel.text = ((int)edginess).ToString();
-        nextLevel.text = ((int)edginess + 1).ToString();
     }
 
     public void addEdginess(float inc)
@@ -137,7 +127,7 @@ public class EdginessHandler : MonoBehaviour
         }
 
         if (edginess < 3f) edginess = 3f;
-        updateEdginessDisplay();
+        updateEdginessGrowth();
         egg_counter = 0;
 
         if ((int) edginess > max_edges)
@@ -172,6 +162,11 @@ public class EdginessHandler : MonoBehaviour
         }
     }
 
+    private void updateEdginessGrowth()
+    {
+        edgeGrowth.updateScale(edginess - (int)edginess);
+    }
+
     public int getEdges()
     {
         return (int)edginess;
@@ -179,12 +174,7 @@ public class EdginessHandler : MonoBehaviour
 
     private void triggerGameOver()
     {
-        StopGame();
-
-        bar.value = 0;
-        currentLevel.text = ((int)max_edges).ToString();
-        nextLevel.text = ((int)max_edges + 1).ToString();
-        
+        StopGame();        
         spawner.unleashGirlfriend(false);
     }
 
@@ -228,10 +218,6 @@ public class EdginessHandler : MonoBehaviour
         spriteHandler.changeSprite(0);
 
         spriteHandler.playerTrueEndingFace();
-
-        bar.value = 1;
-        currentLevel.text = "0";
-        nextLevel.text = "0";
 
         spawner.unleashGirlfriend(true);
     }

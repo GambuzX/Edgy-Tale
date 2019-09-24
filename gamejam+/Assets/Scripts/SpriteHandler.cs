@@ -35,7 +35,13 @@ public class SpriteHandler : MonoBehaviour
                 new_object.transform.position = this.transform.position;
             }
             new_object.transform.rotation = this.transform.rotation;
+
+            Color newColor = new_object.GetComponent<SpriteRenderer>().color;
+            newColor.a = 0.5f;
+            new_object.GetComponent<SpriteRenderer>().color = newColor;
         }
+
+        GameObject.FindObjectOfType<EdginessGrowth>().updatePolyObject();
     }
 
     public void playerTrueEndingFace()

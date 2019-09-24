@@ -17,10 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform body;
 
+    private EdginessGrowth edgeGrowth;
+
     void Start()
     {
         topRightCorner = GameObject.Find("TopRightCorner").transform.position;
         bottomLeftCorner = GameObject.Find("BottomLeftCorner").transform.position;
+        edgeGrowth = GameObject.FindObjectOfType<EdginessGrowth>();
 
         body = this.transform.GetComponentInChildren<Rigidbody2D>().transform;
     }
@@ -73,5 +76,6 @@ public class PlayerMovement : MonoBehaviour
     public void rotatePlayer(float angle)
     {
         body.RotateAround(body.transform.parent.position, Vector3.forward, angle * Time.deltaTime);
+        edgeGrowth.updateTransform(); // try to rotate edge growth too, instead of setting same rotation
     }
 }
