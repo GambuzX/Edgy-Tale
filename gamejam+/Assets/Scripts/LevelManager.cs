@@ -28,9 +28,12 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         activedButton = "Story Mode";
-        buttons = GameObject.FindGameObjectWithTag("ModeButtons").transform.GetComponentsInChildren<Button>(true);
+
+        if(SceneManager.GetActiveScene().name == "Menu")
+            buttons = GameObject.FindGameObjectWithTag("ModeButtons").transform.GetComponentsInChildren<Button>(true);
 
         hasPauseScreen = false;
+
         if (GameObject.FindGameObjectWithTag("PauseScreen"))
         {
             pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen");
