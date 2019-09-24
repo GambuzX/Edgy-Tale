@@ -132,6 +132,7 @@ MonoBehaviour:
   speed: 2
   kill_points: 0.1
   damage: 5
+  health: 1
 --- !u!60 &3478652822362847087
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -157,9 +158,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.006067276, y: 0.762414}
-      - {x: -0.85994196, y: -0.7561208}
-      - {x: 0.88262177, y: -0.76367724}
+    - - {x: -0.006067276, y: 1.0548267}
+      - {x: -1.2312489, y: -1.0710268}
+      - {x: 1.2426767, y: -1.0898304}
 --- !u!82 &3478652822362847086
 AudioSource:
   m_ObjectHideFlags: 0
@@ -281,7 +282,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3478652822836632942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.459, z: 0}
+  m_LocalPosition: {x: 0, y: 0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3478652822362847085}
