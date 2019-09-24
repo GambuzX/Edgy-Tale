@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
 
     protected Transform player;
 
-    protected bool wasHit = false;
+    protected float damagedTime = 1f;
 
     protected EdginessHandler edginessHandler;
     protected HealthHandler healthHandler;
@@ -41,9 +41,17 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        if (damagedTime <= 0.3f)
+        {
+            transform.position += (transform.position - player.position) * Time.deltaTime * 0.4f;
+            damagedTime += Time.deltaTime;
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        }
 
-        if (wasHit)
+        if (health <= 0f)
         {
             transform.Rotate(Vector3.forward, 1000 * Time.deltaTime);
         }
@@ -54,10 +62,10 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.GetComponent<Bullet>())
         {
             health -= 1f;
-            if (health <= 0 && !wasHit)
+            soundSource.Play();
+            damagedTime = 0f;
+            if (health <= 0)
             {
-                soundSource.Play();
-                wasHit = true;
                 this.GetComponent<PolygonCollider2D>().enabled = false;
                 edginessHandler.addEdginess(kill_points);
                 Invoke("destroySelf", 1);
@@ -67,7 +75,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Polygon"))
         {
             healthHandler.changeHealth(-damage);
-            wasHit = true;
+            damagedTime = 0f;
             this.GetComponent<PolygonCollider2D>().enabled = false;
             Invoke("destroySelf", 1);
         }

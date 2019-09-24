@@ -25,7 +25,7 @@ public class Hexagon : Enemy
         transform.RotateAround(player.position, Vector3.forward, theta);
         transform.RotateAround(transform.position, Vector3.forward, -theta);
 
-        if (wasHit)
+        if (health <= 0)
         {
             transform.Rotate(Vector3.forward, 1000 * Time.deltaTime);
         }
