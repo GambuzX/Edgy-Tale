@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class LevelManager : MonoBehaviour
     private PlayerMovement playerMovement;
     private PolyShooter[] polyShooters;
     private bool hasPauseScreen;
+    private string activedButton;
+
+    private Button[] buttons;
 
     public void LoadScene(string name)
     {
@@ -23,6 +27,9 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        activedButton = "Story Mode";
+        buttons = GameObject.FindGameObjectWithTag("ModeButtons").transform.GetComponentsInChildren<Button>(true);
+
         hasPauseScreen = false;
         if (GameObject.FindGameObjectWithTag("PauseScreen"))
         {
@@ -52,5 +59,54 @@ public class LevelManager : MonoBehaviour
     {
         pauseScreen.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    private string getNextButtonName(uint index)
+    {
+        switch (index)
+        {
+            case 0:
+                return "Story Mode";
+            case 1:
+                return "Endless Mode";
+            default:
+                return null;
+        }
+    }
+
+    private uint getButtonIndex(string name)
+    {
+        switch (name)
+        {
+            case "Story Mode":
+                return 0;
+            case "Endless Mode":
+                return 1;
+            default:
+                return 2;
+        }
+    }
+
+    public void ChangeButton(bool direction) //If true, direction = right; if false, direction = left;
+    {
+        foreach (Button button in buttons)
+        {
+            button.gameObject.SetActive(false);
+        }
+
+        uint button_index = getButtonIndex(activedButton);
+
+        uint next_button_index;
+        if (direction)
+        {
+            next_button_index = (button_index + 1) % (uint)buttons.Length;
+        }
+        else
+        {
+            next_button_index = (button_index - 1) % (uint)buttons.Length;
+        }
+
+        activedButton = getNextButtonName(next_button_index);
+        buttons[next_button_index].gameObject.SetActive(true);
     }
 }
