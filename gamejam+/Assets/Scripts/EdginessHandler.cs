@@ -59,7 +59,7 @@ public class EdginessHandler : MonoBehaviour
         edginess = 3f;
         egg_counter = 0;
         
-        updateSlider();
+        updateEdginessDisplay();
     }
 
     private void Update()
@@ -94,7 +94,7 @@ public class EdginessHandler : MonoBehaviour
         powerUpManager.disablePowerUp();
     }
 
-    public void updateSlider()
+    public void updateEdginessDisplay()
     {
         bar.value = edginess - (int) edginess;
         currentLevel.text = ((int)edginess).ToString();
@@ -137,7 +137,7 @@ public class EdginessHandler : MonoBehaviour
         }
 
         if (edginess < 3f) edginess = 3f;
-        updateSlider();
+        updateEdginessDisplay();
         egg_counter = 0;
 
         if ((int) edginess > max_edges)

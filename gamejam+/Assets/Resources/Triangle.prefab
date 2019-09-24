@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670441155318205626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.153, y: -0.973, z: 0}
+  m_LocalPosition: {x: -1.258, y: -1.078, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6670441155323339237}
@@ -58,8 +58,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670441155323339235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.18, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6670441155969823268}
   - {fileID: 6670441155792285371}
@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffect: {fileID: 8300000, guid: 2f66b5750097b3c46b64aba3a798a3a5, type: 3}
   shootDelay: 0.5
+  chargeDelay: 1
 --- !u!212 &6670441155323339236
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -167,13 +168,13 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.8738878, y: -0.7494657}
-  - {x: 0.0048570037, y: 0.7240083}
-  - {x: 0.0001333952, y: -0.7671832}
-  - {x: -0.87866044, y: -0.7614662}
-  - {x: -0.0015586218, y: 0.7429485}
-  - {x: 0.006834388, y: -0.7673645}
-  - {x: 0.8744763, y: -0.74946564}
+  - {x: 1.2253876, y: -1.0634308}
+  - {x: 0.0048561096, y: 1.0529251}
+  - {x: 0.0001335144, y: -1.0736732}
+  - {x: -1.2226868, y: -1.0754318}
+  - {x: -0.0015602112, y: 1.0718651}
+  - {x: 0.014312744, y: -1.0738544}
+  - {x: 1.2484169, y: -1.0634327}
 --- !u!1 &6670441155792285368
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670441155792285368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.133, y: -0.998, z: 0}
+  m_LocalPosition: {x: 1.245, y: -1.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6670441155323339237}
