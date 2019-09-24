@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Polygon"))
         {
             healthHandler.changeHealth(-damage);
+            health = 0f;
             damagedTime = 0f;
             this.GetComponent<PolygonCollider2D>().enabled = false;
             Invoke("destroySelf", 1);
