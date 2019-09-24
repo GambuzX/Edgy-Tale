@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     public float spawnRate = 5f;
     public float minimumSpawnRate = 1f;
 
-    public float spawndistance = 5f;
+    public float spawndistance = 10f;
 
     private Transform[] spawnPositions = new Transform[20];
     private int nPos = 0;
@@ -39,8 +39,13 @@ public class Spawner : MonoBehaviour
         if (newEnemy != null)
         {
             int index = Random.Range(0, nPos);
-            while (Vector3.Distance(spawnPositions[index].position, spriteHandler.transform.position) < spawndistance)
+            Vector3 spawnPos = spawnPositions[index].position;
+            Vector3 playerPos = spriteHandler.transform.position;
+            while (Vector3.Distance(new Vector3(spawnPos.x, spawnPos.y, 0), new Vector3(playerPos.x, playerPos.y, 0)) < spawndistance)
+            {
                 index = Random.Range(0, nPos);
+                spawnPos = spawnPositions[index].position;
+            }
             Instantiate(newEnemy, spawnPositions[index].position, Quaternion.identity);
         }
         Invoke("spawnEnemy", spawnRate);

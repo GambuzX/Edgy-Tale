@@ -14,6 +14,7 @@ TagManager:
   - GameOverScreen
   - PauseScreen
   - Score
+  - ModeButtons
   layers:
   - Default
   - TransparentFX
