@@ -639,8 +639,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 362, y: -4}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 359.4, y: -5}
+  m_SizeDelta: {x: 157.3, y: 35.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244143716
 MonoBehaviour:
@@ -664,7 +664,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 1
+    m_FontSize: 2
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2559,7 +2559,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game
+          m_StringArgument: Endless Mode
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
