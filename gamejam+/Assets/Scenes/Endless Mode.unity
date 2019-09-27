@@ -341,6 +341,11 @@ PrefabInstance:
       propertyPath: spawndistance
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3234148416251184300, guid: c2899c08815c068408ecb30fee099b37,
+        type: 3}
+      propertyPath: spawRateDecrement
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2899c08815c068408ecb30fee099b37, type: 3}
 --- !u!4 &84748940 stripped

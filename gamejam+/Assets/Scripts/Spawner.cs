@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public int decrementSpawnRateTime = 20;
     public float spawnRate = 5f;
     public float minimumSpawnRate = 1f;
+    public float spawRateDecrement = 0.5f;
 
     public float spawndistance = 10f;
 
@@ -53,7 +54,7 @@ public class Spawner : MonoBehaviour
 
     private void decrementSpawnRate()
     {
-        if (spawnRate > minimumSpawnRate) spawnRate -= 0.5f;
+        if (spawnRate > minimumSpawnRate) spawnRate -= spawRateDecrement;
     }
 
     public void stopSpawning()
