@@ -88,7 +88,7 @@ public class Story : MonoBehaviour
 
     private void LoadGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Story Mode");
     }
 
     IEnumerator FadeImage(bool fadeAway)
