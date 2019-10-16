@@ -542,11 +542,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Template_2D
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: C:\Users\ASUS\Desktop\git_repos\sctp-and-sctp-acessories\gamejam+\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: SCTP AND SCTP ACCESSORIES
+  metroCertificateIssuer: SCTP AND SCTP ACCESSORIES
+  metroCertificateNotAfter: 80c6c8d0a9a2d601
   metroApplicationDescription: Template_2D
   wsaImages: {}
   metroTileShortName: 
